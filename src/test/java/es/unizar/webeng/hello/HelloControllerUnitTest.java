@@ -8,8 +8,10 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.HashMap;
+import java.util.Date;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.lessThanOrEqualTo;
 import static org.junit.Assert.assertThat;
 
 @RunWith(SpringRunner.class)
@@ -38,5 +40,20 @@ public class HelloControllerUnitTest {
         assertThat(map.containsKey("message"), is(true));
         // Checks if message matches expected value
         assertThat(map.get("message"), is(message));
+    }
+    
+    /** 
+     * Checks time to be displayed
+     */
+    @Test
+    public void testTime() throws Exception {
+        HashMap<String, Object> map = new HashMap<>();
+        String view = controller.welcome(map);
+        // Checks if controller uses "wellcome" view
+        assertThat(view, is("wellcome"));
+        // Checks if time exists
+        assertThat(map.containsKey("time"), is(true));
+        // Checks if time is before current time
+        assertThat(((Date)map.get("time")).getTime(), lessThanOrEqualTo(new Date().getTime()));
     }
 }
