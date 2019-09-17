@@ -16,6 +16,8 @@ import static org.junit.Assert.assertThat;
 @WebMvcTest(HelloController.class)
 public class HelloControllerUnitTest {
 
+    // Sets message value from properties
+    // or default string if not defined
     @Value("${app.message:Hello World}")
     private String message;
 
@@ -23,12 +25,18 @@ public class HelloControllerUnitTest {
     private HelloController controller;
 
 
+    /** 
+     * Checks message to be displayed
+     */
     @Test
     public void testMessage() throws Exception {
         HashMap<String, Object> map = new HashMap<>();
         String view = controller.welcome(map);
+        // Checks if controller uses "wellcome" view
         assertThat(view, is("wellcome"));
+        // Checks if message exists
         assertThat(map.containsKey("message"), is(true));
+        // Checks if message matches expected value
         assertThat(map.get("message"), is(message));
     }
 }
