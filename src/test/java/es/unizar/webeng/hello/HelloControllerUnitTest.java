@@ -54,6 +54,6 @@ public class HelloControllerUnitTest {
         // Checks if time exists
         assertThat(map.containsKey("time"), is(true));
         // Checks if time is before current time
-        assertThat(((Date)map.get("time")).getTime(), lessThanOrEqualTo(new Date().getTime()));
+        assertThat((Date)map.get("time"), lessThanOrEqualTo(new Date()));
     }
 }
