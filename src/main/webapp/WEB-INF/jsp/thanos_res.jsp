@@ -6,7 +6,7 @@
 <html lang="en"><head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
-    <title>Thanos Snap</title>
+    <title>Thanos Snapp</title>
     <link href="thanos_files/styles.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A demo site to use with Netlify Drop">
@@ -24,7 +24,7 @@
     </div>
     <div class="marvellous-container">
       <div class="header">
-        <h1><span href="."class="title-marvel">Thanos</span> <span class="title-studios gems">Snap</span></h1>
+        <h1><span href="."class="title-marvel">Thanos</span> <span class="title-studios gems">Snapp</span></h1>
         <h2>
             ${msg} <br>
             ${msg2}
