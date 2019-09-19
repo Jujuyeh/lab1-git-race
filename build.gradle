@@ -26,9 +26,13 @@ dependencies {
     compile 'org.webjars:bootstrap:3.3.5'
     compile 'org.webjars:jquery:2.1.4'
 
+    compile 'com.google.guava:guava:28.1-jre'
+
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
     providedRuntime 'org.apache.tomcat.embed:tomcat-embed-jasper'
 
     testCompile 'org.springframework.boot:spring-boot-starter-test'
+
+    compile 'org.springframework.boot:spring-boot-devtools'
 }
 
