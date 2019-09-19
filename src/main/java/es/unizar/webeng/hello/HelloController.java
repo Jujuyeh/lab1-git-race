@@ -26,7 +26,7 @@ public class HelloController {
     @GetMapping("/thanos")
     public String play(@RequestParam(value = "name", required=false) String name, Map<String, Object> model) {
         model.put("name", name);
-        if (name != null && !name.isBlank()) {
+        if (name != null && !name.isEmpty()) {
             Integer hash_bytes = Hashing.murmur3_128().hashString(name, StandardCharsets.UTF_8).asInt();
             if (hash_bytes < 0) {
                 hash_bytes = hash_bytes * -1;
