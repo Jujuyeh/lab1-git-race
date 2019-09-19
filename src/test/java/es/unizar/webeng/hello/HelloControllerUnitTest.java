@@ -31,4 +31,30 @@ public class HelloControllerUnitTest {
         assertThat(map.containsKey("message"), is(true));
         assertThat(map.get("message"), is(message));
     }
+
+    // Test for thanos app (form)
+    @Test
+    public void testThanos() throws Exception {
+        HashMap<String, Object> map = new HashMap<>();
+        String view = controller.play(null, map);
+        assertThat(view, is("thanos"));
+    }
+
+    // Test for thanos app (response)
+    @Test
+    public void testThanos_res() throws Exception {
+        HashMap<String, Object> map = new HashMap<>();
+
+        //Alive
+        String view = controller.play("true", map);
+        assertThat(view, is("thanos_res"));
+        assertThat(map.containsKey("msg2"), is(true));
+        assertThat(map.get("msg2"), is("Congratulations!!"));
+
+        //Dead
+        view = controller.play("false", map);
+        assertThat(view, is("thanos_res"));
+        assertThat(map.containsKey("msg2"), is(true));
+        assertThat(map.get("msg2"), is("You would dead :("));
+    }
 }
