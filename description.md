@@ -21,11 +21,31 @@ After a few seconds, "BUILD SUCCESSFUL" indicates that the build has completed. 
 
 # How to test the code
 
+Testing the code can be done automatically by using the JUint library for unit tests. Integration tests may also use specific components of the Spring framework to help with this task.
 
+Project is tested upon each build. However, running all the tests can be requested manually, just do:
+
+```
+$ cd lab1-git-race
+$ gradle check
+```
+
+In order to run unit test only, use instead:
+
+```
+$ cd lab1-git-race
+$ gradle test
+```
 
 # How to deploy the code in a server
 
+For developing stages of the project, it is possible to run a *ad-hoc* Tomcat server, just do:
 
+```
+$ cd lab1-git-race
+$ gradle bootRun
+```
+Refer to [Apache Tomcat documentation](https://tomcat.apache.org/tomcat-8.0-doc/deployer-howto.html) about how to deploy a WAR file, once [deliverables have been built](#how-to-build-the-code).
 
 # Which are the technologies used in the code
 
