@@ -3,6 +3,8 @@
 *.iml
 out
 build/
+.setting
+.project
 
 # Ignore Gradle GUI config
 gradle-app.setting
