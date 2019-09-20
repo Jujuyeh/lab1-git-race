@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Application",
+            "request": "launch",
+            "mainClass": "es.unizar.webeng.hello.Application",
+            "projectName": "lab1-git-race"
+        }
+    ]
+}

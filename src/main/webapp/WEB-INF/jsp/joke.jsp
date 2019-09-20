@@ -17,10 +17,9 @@
 |___|___|  /\___  /    \__/\  /  \___  >___  /  |___| /____/  
          \//_____/          \/       \/    \/                 
 </pre>
-<kbd>${os} ${hostname} ${version} ${time} <br>
-Last login: ${last_time} from ${last_ip}<br>
+<kbd>${intro} ${joke} <br>
 <br>
-user@${hostname}:~$ ${message}</kbd>
+</kbd>
 <%-- Links to JQuery JavaScript library as a webjar dependency --%>
 <script type="text/javascript" src="webjars/jquery/2.1.4/jquery.min.js"></script>
 </body>
