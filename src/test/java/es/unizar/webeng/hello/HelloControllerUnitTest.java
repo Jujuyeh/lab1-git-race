@@ -19,8 +19,10 @@ import static org.junit.Assert.assertNotNull;
 @WebMvcTest(HelloController.class)
 public class HelloControllerUnitTest {
 
-    // Sets message value from properties
-    // or default string if not defined
+    /**
+     * Sets message value from properties
+     * or default string if not defined
+     */
     @Value("${app.message:Hello World}")
     private String message;
 
@@ -35,11 +37,11 @@ public class HelloControllerUnitTest {
     public void testMessage() throws Exception {
         HashMap<String, Object> map = new HashMap<>();
         String view = controller.welcome(map);
-        // Checks if controller uses "wellcome" view
+        /** Checks if controller uses "wellcome" view */
         assertThat(view, is("wellcome"));
-        // Checks if message exists
+        /** Checks if message exists */
         assertThat(map.containsKey("message"), is(true));
-        // Checks if message matches expected value
+        /** Checks if message matches expected value */
         assertThat(map.get("message"), is(message));
     }
     
@@ -50,11 +52,11 @@ public class HelloControllerUnitTest {
     public void testTime() throws Exception {
         HashMap<String, Object> map = new HashMap<>();
         String view = controller.welcome(map);
-        // Checks if controller uses "wellcome" view
+        /** Checks if controller uses "wellcome" view */
         assertThat(view, is("wellcome"));
-        // Checks if time exists
+        /** Checks if time exists */
         assertThat(map.containsKey("time"), is(true));
-        // Checks if time is before current time
+        /** Checks if time is before current time */
         assertThat((Date)map.get("time"), lessThanOrEqualTo(new Date()));
     }
     
@@ -65,9 +67,9 @@ public class HelloControllerUnitTest {
     public void testSystem() throws Exception {
         HashMap<String, Object> map = new HashMap<>();
         String view = controller.welcome(map);
-        // Checks if controller uses "wellcome" view
+        /** Checks if controller uses "wellcome" view */
         assertThat(view, is("wellcome"));
-        // Checks if data exists and is not null
+        /** Checks if data exists and is not null */
         assertThat(map.containsKey("os"), is(true));
         assertNotNull(map.get("os"));
         assertThat(map.containsKey("version"), is(true));
@@ -83,9 +85,9 @@ public class HelloControllerUnitTest {
     public void testClient() throws Exception {
         HashMap<String, Object> map = new HashMap<>();
         String view = controller.welcome(map);
-        // Checks if controller uses "wellcome" view
+        /** Checks if controller uses "wellcome" view */
         assertThat(view, is("wellcome"));
-        // Checks if data exists and is valid
+        /** Checks if data exists and is valid */
         assertThat(map.containsKey("last_ip"), is(true));
         assertNotNull(map.get("last_ip"));
         assertThat(map.containsKey("last_time"), is(true));

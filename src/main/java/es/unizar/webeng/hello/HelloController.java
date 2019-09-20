@@ -18,8 +18,10 @@ import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class HelloController {
-    // Sets message value from properties,
-    // or default string if not defined.
+    /**
+     * Sets message value from properties,
+     * or default string if not defined.
+     */
     @Value("${app.message:Hello World}")
     private String message;
     private Date last_time = new Date();
@@ -36,30 +38,30 @@ public class HelloController {
      */
     @GetMapping("/")
     public String welcome(Map<String, Object> model) {
-        // Sets "os" and "version" from system information
+        /** Sets "os" and "version" from system information */
         model.put("os", System.getProperty("os.name"));
         model.put("version", System.getProperty("os.version"));
-        // Source: https://stackoverflow.com/questions/7883542/getting-the-computer-name-in-java
+        /** @see https://stackoverflow.com/questions/7883542/getting-the-computer-name-in-java */
         try
         {
             InetAddress addr;
             addr = InetAddress.getLocalHost();
-            // Sets "hostname" attribute to server machine name
+            /** Sets "hostname" attribute to server machine name */
             model.put("hostname", addr.getHostName());
         }
         catch (UnknownHostException ex)
         {
             System.out.println("Hostname can not be resolved");
         }
-        // Sets "time" attribute to current date and time
+        /** Sets "time" attribute to current date and time */
         model.put("time", new Date());
-        // Sets time of last request
+        /** Sets time of last request */
         model.put("last_time", last_time);
         last_time = new Date();
-        // Sets IP of last request
+        /** Sets IP of last request */
         model.put("last_ip", last_ip);
         try {
-            // Source: https://www.mkyong.com/spring-mvc/spring-mvc-how-to-get-client-ip-address/
+            /** @see https://www.mkyong.com/spring-mvc/spring-mvc-how-to-get-client-ip-address/ */
             String remoteAddr = "";
             if (request != null) {
                 remoteAddr = request.getHeader("X-FORWARDED-FOR");
@@ -72,7 +74,7 @@ public class HelloController {
         catch (IllegalStateException e) {}
         catch (NullPointerException e) {}
         model.put("message", message);
-        // Renders "wellcome" view using "model" attributes
+        /** Renders "wellcome" view using "model" attributes */
         return "wellcome";
     }
 }
