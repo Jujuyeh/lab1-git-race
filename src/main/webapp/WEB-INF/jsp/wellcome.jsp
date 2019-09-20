@@ -19,6 +19,7 @@
 </pre>
 <kbd>${os} ${hostname} ${version} ${time} <br>
 Last login: ${last_time} from ${last_ip}<br>
+<br>Deadline is ${deadline}<br>
 <br>
 user@${hostname}:~$ ${message}</kbd>
 <%-- Links to JQuery JavaScript library as a webjar dependency --%>

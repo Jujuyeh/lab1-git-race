@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Map;
+import java.util.GregorianCalendar;
 
 import java.lang.IllegalStateException;
 import java.lang.NullPointerException;
@@ -18,6 +20,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 import javax.servlet.http.HttpServletRequest;
+
 
 @Controller
 public class HelloController {
@@ -31,6 +34,7 @@ public class HelloController {
     @Value("${app.message:Hello World}")
     private String message;
     private Date last_time = new Date();
+    private Date deadline = new GregorianCalendar(2019, Calendar.OCTOBER, 25).getTime();
     private String last_ip = "0.0.0.0";
     
     @Autowired
@@ -82,6 +86,9 @@ public class HelloController {
             logger.debug("Request object is not valid");
         }
         model.put("message", message);
+        /** Sets date of deadline */
+        model.put("deadline", deadline);
+
         /** Renders "wellcome" view using "model" attributes */
         return "wellcome";
     }
