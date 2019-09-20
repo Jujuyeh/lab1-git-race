@@ -8,11 +8,14 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.HashMap;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.lessThanOrEqualTo;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringRunner.class)
@@ -92,5 +95,19 @@ public class HelloControllerUnitTest {
         assertNotNull(map.get("last_ip"));
         assertThat(map.containsKey("last_time"), is(true));
         assertThat((Date)map.get("last_time"), lessThanOrEqualTo(new Date()));
+    }
+
+    /** 
+     * Checks deadline to be displayed
+     */
+    @Test
+    public void testDeadline() throws Exception {
+        HashMap<String, Object> map = new HashMap<>();
+        String view = controller.welcome(map);
+        /** Checks if controller uses "wellcome" view */
+        assertThat(view, is("wellcome"));
+        /** Checks if deadline exists and has expected value */
+        assertThat(map.containsKey("deadline"), is(true));
+        assertEquals(new GregorianCalendar(2019, Calendar.OCTOBER, 25).getTime(), map.get("deadline"));
     }
 }
