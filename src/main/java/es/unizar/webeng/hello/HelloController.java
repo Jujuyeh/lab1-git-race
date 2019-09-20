@@ -42,7 +42,7 @@ public class HelloController {
             if (hash_bytes < 0) {
                 hash_bytes = hash_bytes * -1;
             }
-            System.out.print("Hola, hash = " + hash_bytes.toString());
+            
             // If the integer is even the resoult is dead, else alive.
             if (hash_bytes % 2 == 0) {
                 // Dead
