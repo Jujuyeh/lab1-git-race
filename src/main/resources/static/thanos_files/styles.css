@@ -184,7 +184,7 @@ input[type=text] {
 .gems {
   color: red;
   animation-name: rainbow;
-  animation-duration: 6s;
+  animation-duration: 10s;
   animation-iteration-count: infinite;
 }
 
