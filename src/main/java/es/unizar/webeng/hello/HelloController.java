@@ -43,7 +43,7 @@ public class HelloController {
                 hash_bytes = hash_bytes * -1;
             }
             
-            // If the integer is even the resoult is dead, else alive.
+            // If the integer is even the result is dead, else alive.
             if (hash_bytes % 2 == 0) {
                 // Dead
                 model.put("msg", "Look like you are from the other 50%...");

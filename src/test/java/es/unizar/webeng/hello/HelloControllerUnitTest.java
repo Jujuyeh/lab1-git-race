@@ -40,19 +40,21 @@ public class HelloControllerUnitTest {
         assertThat(view, is("thanos"));
     }
 
-    // Test for thanos app (response)
+    // Test for thanos app (response alive)
     @Test
-    public void testThanos_res() throws Exception {
+    public void testThanos_res_alive() throws Exception {
         HashMap<String, Object> map = new HashMap<>();
-
-        //Alive
         String view = controller.play("true", map);
         assertThat(view, is("thanos_res"));
         assertThat(map.containsKey("msg2"), is(true));
         assertThat(map.get("msg2"), is("Congratulations!!"));
+    }
 
-        //Dead
-        view = controller.play("false", map);
+    // Test for thanos app (response dead)
+    @Test
+    public void testThanos_res_dead() throws Exception {
+        HashMap<String, Object> map = new HashMap<>();
+        String view = controller.play("false", map);
         assertThat(view, is("thanos_res"));
         assertThat(map.containsKey("msg2"), is(true));
         assertThat(map.get("msg2"), is("You would dead :("));
