@@ -8,57 +8,51 @@
 6. [What means each a specific piece or code](#what-means-each-a-specific-piece-or-code)
 7. [Which is the purpose of a specific Java annotation](#which-is-the-purpose-of-a-specific-java-annotation)
 
-# How to build the code
+## How to build the code
 
 This application uses [Gradle](http://gradle.org) to build the code. Please, refer to the [Gradle user guide](https://docs.gradle.org/current/userguide/installation.html) for its installation. Once it is installed just do:
 
-```
-$ cd lab1-git-race
-$ gradle build
+```bash
+cd lab1-git-race
+gradle build
 ```
 
 After a few seconds, "BUILD SUCCESSFUL" indicates that the build has completed. There you’ll find generated WAR file inside *libs* folder under *build* directory.
 
-# How to test the code
+## How to test the code
 
 Testing the code can be done automatically by using the JUint library for unit tests. Integration tests may also use specific components of the Spring framework to help with this task.
 
 Project is tested upon each build. However, running all the tests can be requested manually, just do:
 
-```
-$ cd lab1-git-race
-$ gradle check
+```bash
+cd lab1-git-race
+gradle check
 ```
 
 In order to run unit test only, use instead:
 
-```
-$ cd lab1-git-race
-$ gradle test
+```bash
+cd lab1-git-race
+gradle test
 ```
 
-# How to deploy the code in a server
+## How to deploy the code in a server
 
 For developing stages of the project, it is possible to run a *ad-hoc* Tomcat server, just do:
 
-```
-$ cd lab1-git-race
-$ gradle bootRun
+```bash
+cd lab1-git-race
+gradle bootRun
 ```
 Refer to [Apache Tomcat documentation](https://tomcat.apache.org/tomcat-8.0-doc/deployer-howto.html) about how to deploy a WAR file, once [deliverables have been built](#how-to-build-the-code).
 
-# Which are the technologies used in the code
+## Which are the technologies used in the code
 
+## How these technologies work
 
+## What means each a specific piece or code
 
-# How these technologies work
-
-
-
-# What means each a specific piece or code
-
-
-
-# Which is the purpose of a specific Java annotation
+## Which is the purpose of a specific Java annotation
 
 
