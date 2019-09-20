@@ -1,5 +1,8 @@
 package es.unizar.webeng.hello;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +21,9 @@ import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class HelloController {
+    
+    Logger logger = LoggerFactory.getLogger(HelloController.class);
+    
     /**
      * Sets message value from properties,
      * or default string if not defined.
@@ -51,7 +57,7 @@ public class HelloController {
         }
         catch (UnknownHostException ex)
         {
-            System.out.println("Hostname can not be resolved");
+            logger.info("Hostname can not be resolved");
         }
         /** Sets "time" attribute to current date and time */
         model.put("time", new Date());
@@ -71,8 +77,10 @@ public class HelloController {
             }
             last_ip = remoteAddr;
         }
-        catch (IllegalStateException e) {}
-        catch (NullPointerException e) {}
+        catch (IllegalStateException e) {
+            /** For unit tests */
+            logger.debug("Request object is not valid");
+        }
         model.put("message", message);
         /** Renders "wellcome" view using "model" attributes */
         return "wellcome";
