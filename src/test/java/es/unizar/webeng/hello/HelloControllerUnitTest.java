@@ -32,6 +32,8 @@ public class HelloControllerUnitTest {
     @Autowired
     private HelloController controller;
 
+    private Date expectedDeadline = new GregorianCalendar(2019, Calendar.OCTOBER, 25).getTime();
+
 
     /** 
      * Checks message to be displayed
@@ -108,6 +110,7 @@ public class HelloControllerUnitTest {
         assertThat(view, is("wellcome"));
         /** Checks if deadline exists and has expected value */
         assertThat(map.containsKey("deadline"), is(true));
-        assertEquals(new GregorianCalendar(2019, Calendar.OCTOBER, 25).getTime(), map.get("deadline"));
+        assertEquals(expectedDeadline, map.get("deadline"));
     }
+
 }
