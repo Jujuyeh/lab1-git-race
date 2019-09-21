@@ -49,6 +49,12 @@ Refer to [Apache Tomcat documentation](https://tomcat.apache.org/tomcat-8.0-doc/
 
 ## Which are the technologies used in the code
 
+## How these technologies work
+
+### Junit4
+
+JUnit is one of the most popular testing frameworks for Java. Although JUnit5 is the newest version of the framework, JUnit4 is still used in many projects. Let's see [how it works](#how-junit4-works).
+
 ### Spring
 
 Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can "just run".
@@ -68,8 +74,21 @@ In fact, a professor of Web Engineering demonstrated how to mount URL Shortener 
 The sources used and where much more information can be found:
 * [spring.io](https://spring.io/projects/spring-boot)
 * [hwww.journaldev.com/7969/spring-boot-tutorial](https://www.journaldev.com/7969/spring-boot-tutorial)
-
+  
 ## How these technologies work
+
+### How Junit4 works
+
+Creating a test with JUnit4 is really easy. In order to do it follow these steps:
+
+1. Create the class you want to test (e.g. JavaClass.java).
+2. Create a class for testing (e.g. JavaClassTest.java).
+3. For each test you want to create, write a method with @Test tag above.
+4. Run the test.
+
+> **Note:** You may to import some JUnit4 libraries.
+
+For further information, you can visit <https://github.com/junit-team/junit4/wiki/Getting-started>.
 
 ### To start a project with Spring boot
 
