@@ -78,27 +78,33 @@ The sources used and where much more information can be found:
 
 #### Create Spring Boot proyect
 
-1. Create gradle proyect
+1. Create gradle project
+
 ```bash
 gradle init
 ```
+
 Let's select the desired options, using java as language.
 2. Transform into a Spring Boot Web application
 Edit the class App at src/... and adds the following imports:
+
 ```java
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 ```
+
 Above the definition of the App function adds : @SpringBootApplication
 And finally, within the main function write SpringApplication.run(App.class, args);
 3. Editing the gradle builder
 Add the following plugins and dependencies:
+
 ```java
 id 'org.springframework.boot' version '2.1.8.RELEASE'
 id 'io.spring.dependency-management' version '1.0.8.RELEASE'
 
 implementation 'org.springframework.boot:spring-boot-starter-web'
 ```
+
 4. This is the initial application of Spring Boot.
 
 5. Now you can add the actions that are triggered when making requests to endpoints.
@@ -117,6 +123,7 @@ In short, it serves to indicate that it is the controller class of the architect
 To talk about the @Value annotation, first we must talk about the spring boot properties file.
 Property files are used to keep a number of properties in a single file to run the application in any environment. In Spring Boot, the properties file is stored in the application.properties file.
 The syntax of the properties file is
+
 ```bash
 app.{"key"}="value"
 ```
@@ -124,6 +131,7 @@ app.{"key"}="value"
 The @Value annotation is used to read the value of some of the properties stored in the properties file.
 In this file, you can see data about the environment, about values or variables or even properties of the application as the listening port.
 The syntax of the @Value annotation is
+
 ```java
 @Value("${property_key_name}")
 ```
