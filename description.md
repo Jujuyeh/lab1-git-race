@@ -48,7 +48,9 @@ gradle bootRun
 Refer to [Apache Tomcat documentation](https://tomcat.apache.org/tomcat-8.0-doc/deployer-howto.html) about how to deploy a WAR file, once [deliverables have been built](#how-to-build-the-code).
 
 ## Which are the technologies used in the code
+
 ### Spring
+
 Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can "just run".
 
 We take an opinionated view of the Spring platform and third-party libraries so you can get started with minimum fuss. Most Spring Boot applications need very little Spring configuration.
@@ -56,6 +58,7 @@ We take an opinionated view of the Spring platform and third-party libraries so 
 In fact, a professor of Web Engineering demonstrated how to mount URL Shortener in less than 5 minutes with Spring Boot.
 
 #### Some advantages over using spring
+
 * It is very easy to develop Spring Based applications with Java or Groovy.
 * It reduces lots of development time and increases productivity.
 * It provides Embedded HTTP servers like Tomcat, Jetty etc. to develop and test our web applications very easily.
@@ -67,11 +70,14 @@ The sources used and where much more information can be found:
 * [hwww.journaldev.com/7969/spring-boot-tutorial](https://www.journaldev.com/7969/spring-boot-tutorial)
 
 ## How these technologies work
+
 ### To start a project with Spring boot
+
 #### Prerequisites
 1. We are going to use the gradle tool, so it must be installed.
 
 #### Create Spring Boot proyect
+
 1. Create gradle proyect
 ```bash
 gradle init
@@ -100,11 +106,14 @@ implementation 'org.springframework.boot:spring-boot-starter-web'
 ## What means each a specific piece or code
 
 ## Which is the purpose of a specific Java annotation
+
 ### @Controller
+
 As spring boot it follows the architecture Model-View-Controller, @Controller annotation indicates that the annotated class is a controller. It is a specialization of @Component and is autodetected through classpath scanning. It is typically used in combination with annotated handler methods based on the @RequestMapping annotation.
 In short, it serves to indicate that it is the controller class of the architecture.
 
 ### @Value
+
 To talk about the @Value annotation, first we must talk about the spring boot properties file.
 Property files are used to keep a number of properties in a single file to run the application in any environment. In Spring Boot, the properties file is stored in the application.properties file.
 The syntax of the properties file is
@@ -121,6 +130,7 @@ The syntax of the @Value annotation is
 
 
 ### @GetMapping("/")
+
 @GetMapping annotation maps HTTP GET requests onto specific handler methods. It is a composed annotation that acts as a shortcut for @RequestMapping(method = RequestMethod.GET).
 If the argument is "/", it means that the method whose annotation is @GetMapping("/") will be triggered when a request is made to the "root" of the web.
 If the argument is of the type "string/string...etc", it means that the method whose annotation is @GetMapping("string/string...") will be triggered when a request is made to this endpoint of the web.
