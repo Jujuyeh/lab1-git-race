@@ -33,7 +33,7 @@ public class HelloControllerUnitTest {
     @Autowired
     private HelloController controller;
 
-    private Date expectedDeadline = new GregorianCalendar(2019, Calendar.OCTOBER, 25).getTime();
+    private Date expectedDeadline = new GregorianCalendar(2019, Calendar.OCTOBER, 25, 23, 59, 59).getTime();
 
 
     /** 

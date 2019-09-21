@@ -34,7 +34,7 @@ public class HelloController {
     @Value("${app.message:Hello World}")
     private String message;
     private Date last_time = new Date();
-    private Date deadline = new GregorianCalendar(2019, Calendar.OCTOBER, 25).getTime();
+    private Date deadline = new GregorianCalendar(2019, Calendar.OCTOBER, 25, 23, 59, 59).getTime();
     private String last_ip = "0.0.0.0";
     
     @Autowired
