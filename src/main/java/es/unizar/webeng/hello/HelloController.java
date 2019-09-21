@@ -86,19 +86,27 @@ public class HelloController {
         model.put("message", message);
         /** Renders "wellcome" view using "model" attributes */
         
-        userAgent = request.getHeader("User-Agent");
-        model.put("uagent", userAgent);
+        try {            
+            if (request != null) {
+            	userAgent = request.getHeader("User-Agent");
+            }
+        }
+        catch (IllegalStateException e) {
+            /** For unit tests */
+            logger.debug("Request object is not valid");
+        }
         
-
         if (yay == null) {
         	model.put("color", "red");
         }
         else {
-        	return "redirect:https://github.com/UNIZAR-30246-WebEngineering/lab1-git-race";
+        	model.put("color", "green");
         	
         }
-                
+  
         return "wellcome";
+        
+        
     }
 
 }
