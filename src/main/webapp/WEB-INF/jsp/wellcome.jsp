@@ -7,9 +7,10 @@
 <title>Hello world</title>
 <%-- Links to Bootstrap CSS framework as a webjar dependency --%>
 <link rel="stylesheet" type="text/css"
-      href="webjars/bootstrap/3.3.5/css/bootstrap.min.css"/>
+	href="webjars/bootstrap/3.3.5/css/bootstrap.min.css" />
 <body style="background-color: #333">
-<pre style="display: table;color: white;background-color: transparent;border: none;">
+	<pre
+		style="display: table; color: white; background-color: transparent; border: none;">
 .___                  __      __      ___.      ____ ________ 
 |   | ____    ____   /  \    /  \ ____\_ |__   /_   /   __   \
 |   |/    \  / ___\  \   \/\/   // __ \| __ \   |   \____    /
@@ -17,19 +18,27 @@
 |___|___|  /\___  /    \__/\  /  \___  >___  /  |___| /____/  
          \//_____/          \/       \/    \/                 
 </pre>
-<kbd>${os} ${hostname} ${version} ${time} <br>
-Last login: ${last_time} from ${last_ip}<br>
-Do you wanna know if you would survive thanos snap?? ->> <a href="./thanos">CLICK HERE</a><br>
-<br>
-user@${hostname}:~$ ${message}</kbd>
-<%-- Links to JQuery JavaScript library as a webjar dependency --%>
-<script type="text/javascript" src="webjars/jquery/2.1.4/jquery.min.js"></script>
+	<kbd>${os}
+		${hostname} ${version} ${time} <br> Last login: ${last_time} from
+		${last_ip}<br> Do you wanna know if you would survive thanos
+		snap?? ->> <a href="./thanos">CLICK HERE</a><br> <br>
+		user@${hostname}:~$ ${message}
+	</kbd>
+	<%-- Links to JQuery JavaScript library as a webjar dependency --%>
+	<script type="text/javascript" src="webjars/jquery/2.1.4/jquery.min.js"></script>
 </body>
 
 
 
-    <div style="position: absolute; bottom: 5px; background-color: ${color}">
-     ${uagent}
-    </div>
+<div style="position: absolute; bottom: 5px; background-color: ${color}">
+	${uagent}
+	<button onclick="myFunction()">Who am i?</button>
+
+	<script>
+		function myFunction() {
+			alert("${status}");
+		}
+	</script>
+</div>
 
 </html>
