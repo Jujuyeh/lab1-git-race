@@ -95,7 +95,7 @@ The sources used and where much more information can be found:
     ```
 
     Above the definition of the App function adds : @SpringBootApplication
-    And finally, within the main function write `SpringApplication.run(App.class, args);
+    And finally, within the main function write `SpringApplication.run(App.class, args)`;
 
 1. Editing the gradle builder
     Add the following plugins and dependencies:
