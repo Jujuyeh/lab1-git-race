@@ -18,6 +18,7 @@ import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.Matchers.lessThanOrEqualTo;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -126,6 +127,7 @@ public class HelloControllerUnitTest {
         }
         catch(NullPointerException e){
             logger.debug("Deadline is missing");
+            fail("Deadline is missing");
         }
     }
 
