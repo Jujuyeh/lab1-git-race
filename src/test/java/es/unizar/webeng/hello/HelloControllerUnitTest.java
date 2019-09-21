@@ -104,5 +104,6 @@ public class HelloControllerUnitTest {
         /**Checks if data exist and is valid */
         assertThat(map.containsKey("visitorCount"), is(true));
         assertNotNull(map.get("visitorCount"));
+        assertTrue("The value of visitor count must be greater than 0", (int)map.get("visitorCount") > 0);
     }
 }
