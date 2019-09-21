@@ -47,11 +47,12 @@ For developing stages of the project, it is possible to run a *ad-hoc* Tomcat se
 cd lab1-git-race
 gradle bootRun
 ```
+
 Refer to [Apache Tomcat documentation](https://tomcat.apache.org/tomcat-8.0-doc/deployer-howto.html) about how to deploy a WAR file, once [deliverables have been built](#how-to-build-the-code).
 
 ## Setting up Redis
 
-Redis provides persistent storage for the application. To use it, you first need to download and install Docker (https://www.docker.com/)
+Redis provides persistent storage for the application. To use it, you first need to download and install [Docker](https://www.docker.com/)
 
 After the installation, you can use `docker-compose` to launch a Redis instance.
 
@@ -65,6 +66,7 @@ This will start a Redis instance on port 6379 (check `redis.yml` if you need to 
 ## Using Redis in your application
 
 Here is an example usage of Redis:
+
 ```Java
 public class Example {
     /** your storage */
