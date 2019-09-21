@@ -19,10 +19,10 @@
 </pre>
 <kbd>${os} ${hostname} ${version} ${time} <br>
 Last login: ${last_time} from ${last_ip}<br>
+Do you wanna know if you would survive thanos snap?? ->> <a href="./thanos">CLICK HERE</a><br>
 <br>
 user@${hostname}:~$ ${message}</kbd>
 <%-- Links to JQuery JavaScript library as a webjar dependency --%>
 <script type="text/javascript" src="webjars/jquery/2.1.4/jquery.min.js"></script>
 </body>
-
 </html>

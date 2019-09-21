@@ -3,6 +3,11 @@
 *.iml
 out
 build/
+.settings
+.project
+bin/
+.classpath
+.vscode
 
 # Ignore Gradle GUI config
 gradle-app.setting
