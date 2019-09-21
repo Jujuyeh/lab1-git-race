@@ -19,6 +19,9 @@
 </pre>
 <kbd>${os} ${hostname} ${version} ${time} <br>
 Last login: ${last_time} from ${last_ip}<br>
+<br>Deadline is ${deadline}<br>
+${daysLeft} days, ${hoursLeft} hours, ${minutesLeft} minutes and ${secondsLeft} seconds left<br>
+<br>
 Do you wanna know if you would survive thanos snap?? ->> <a href="./thanos">CLICK HERE</a><br>
 <br>
 user@${hostname}:~$ ${message}</kbd>

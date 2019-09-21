@@ -85,7 +85,24 @@ public class Example {
 
 ## Which are the technologies used in the code
 
+### Junit4
+
+JUnit is one of the most popular testing frameworks for Java. Although JUnit5 is the newest version of the framework, JUnit4 is still used in many projects. Let's see [how it works](#how-junit4-works).
+  
 ## How these technologies work
+
+### How Junit4 works
+
+Creating a test with JUnit4 is really easy. In order to do it follow these steps:
+
+1. Create the class you want to test (e.g. JavaClass.java).
+2. Create a class for testing (e.g. JavaClassTest.java).
+3. For each test you want to create, write a method with @Test tag above.
+4. Run the test.
+
+> **Note:** You may to import some JUnit4 libraries.
+
+For further information, you can visit <https://github.com/junit-team/junit4/wiki/Getting-started>.
 
 ## What means each a specific piece or code
 
