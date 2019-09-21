@@ -104,6 +104,22 @@ implementation 'org.springframework.boot:spring-boot-starter-web'
 As spring boot it follows the architecture Model-View-Controller, @Controller annotation indicates that the annotated class is a controller. It is a specialization of @Component and is autodetected through classpath scanning. It is typically used in combination with annotated handler methods based on the @RequestMapping annotation.
 In short, it serves to indicate that it is the controller class of the architecture.
 
+### @Value
+To talk about the @Value annotation, first we must talk about the spring boot properties file.
+Property files are used to keep a number of properties in a single file to run the application in any environment. In Spring Boot, the properties file is stored in the application.properties file.
+The syntax of the properties file is
+```bash
+app.{"key"}="value"
+```
+
+The @Value annotation is used to read the value of some of the properties stored in the properties file.
+In this file, you can see data about the environment, about values or variables or even properties of the application as the listening port.
+The syntax of the @Value annotation is
+```java
+@Value("${property_key_name}")
+```
+
+
 ### @GetMapping("/")
 @GetMapping annotation maps HTTP GET requests onto specific handler methods. It is a composed annotation that acts as a shortcut for @RequestMapping(method = RequestMethod.GET).
 If the argument is "/", it means that the method whose annotation is @GetMapping("/") will be triggered when a request is made to the "root" of the web.
