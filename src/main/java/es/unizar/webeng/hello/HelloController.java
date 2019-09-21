@@ -32,6 +32,9 @@ public class HelloController {
     private String message;
     private Date last_time = new Date();
     private String last_ip = "0.0.0.0";
+
+    @Value("${app.visitorCount}")
+    private int visitorCount;
     
     @Autowired
     private HttpServletRequest request;
@@ -82,6 +85,11 @@ public class HelloController {
             logger.debug("Request object is not valid");
         }
         model.put("message", message);
+
+        /* It adds one to the visits of the web */
+        visitorCount++;
+        model.put("visitorCount", visitorCount);
+        
         /** Renders "wellcome" view using "model" attributes */
         return "wellcome";
     }

@@ -13,6 +13,7 @@ import java.util.Date;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.lessThanOrEqualTo;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringRunner.class)
@@ -92,5 +93,17 @@ public class HelloControllerUnitTest {
         assertNotNull(map.get("last_ip"));
         assertThat(map.containsKey("last_time"), is(true));
         assertThat((Date)map.get("last_time"), lessThanOrEqualTo(new Date()));
+    }
+
+    @Test
+    public void testCount() throws Exception{
+        HashMap<String, Object> map = new HashMap<>();
+        String view = controller.welcome(map);
+        /** Checks if controller uses "wellcome" view */
+        assertThat(view, is("wellcome"));
+        /**Checks if data exist and is valid */
+        assertThat(map.containsKey("visitorCount"), is(true));
+        /** Visits can't be negative */
+        assertTrue("Visitor count should be greater or equal to 0", (int)map.get("visitorCount") >= 0);
     }
 }

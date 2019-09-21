@@ -16,11 +16,18 @@
 |   |   |  \/ /_/  >  \        /\  ___/| \_\ \  |   |  /    / 
 |___|___|  /\___  /    \__/\  /  \___  >___  /  |___| /____/  
          \//_____/          \/       \/    \/                 
-</pre>
-<kbd>${os} ${hostname} ${version} ${time} <br>
+<!-- A free, customizable, responsive weather widget: https://weatherwidget.io/ -->
+<a class="weatherwidget-io" href="https://forecast7.com/en/41d65n0d89/zaragoza/" data-label_1="ZARAGOZA" data-label_2="WEATHER" data-theme="original" >ZARAGOZA WEATHER</a>
+<script>
+!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+</script>
+
+<kbd>${os} ${hostname} ${version} ${time}
+You've visited the web <strong>${visitorCount}</strong> times!
 Last login: ${last_time} from ${last_ip}<br>
 <br>
 user@${hostname}:~$ ${message}</kbd>
+<br>
 <%-- Links to JQuery JavaScript library as a webjar dependency --%>
 <script type="text/javascript" src="webjars/jquery/2.1.4/jquery.min.js"></script>
 </body>
