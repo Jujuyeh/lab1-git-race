@@ -116,13 +116,13 @@ public class HelloControllerUnitTest {
         String view = controller.welcome(map);
         /** Checks if controller uses "wellcome" view */
         assertThat(view, is("wellcome"));
-        /** Checks if deadline exists and its value has expected type */
-        assertEquals(Date.class, map.get("deadline").getClass());
-        Date deadlineLocal = (Date)map.get("deadline");
         try
         {
-        /** Checks if deadline has expected value */
-        assertEquals(expectedDeadline, deadlineLocal);
+            /** Checks if deadline exists and its value has expected type */
+            assertEquals(Date.class, map.get("deadline").getClass());
+            Date deadlineLocal = (Date)map.get("deadline");
+            /** Checks if deadline has expected value */
+            assertEquals(expectedDeadline, deadlineLocal);
         }
         catch(NullPointerException e){
             logger.debug("Deadline is missing");
