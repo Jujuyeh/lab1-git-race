@@ -1,12 +1,14 @@
 # Table of Contents
 
 1. [How to build the code](#how-to-build-the-code)
-2. [How to test the code](#how-to-test-the-code)
-3. [How to deploy the code in a server](#how-to-deploy-the-code-in-a-server)
-4. [Which are the technologies used in the code](#which-are-the-technologies-used-in-the-code)
-5. [How these technologies work](#how-these-technologies-work)
-6. [What means each a specific piece or code](#what-means-each-a-specific-piece-or-code)
-7. [Which is the purpose of a specific Java annotation](#which-is-the-purpose-of-a-specific-java-annotation)
+1. [How to test the code](#how-to-test-the-code)
+1. [How to deploy the code in a server](#how-to-deploy-the-code-in-a-server)
+1. [Setting up Redis](#setting-up-redis)
+1. [Using Redis in your application](#using-redis-in-your-application)
+1. [Which are the technologies used in the code](#which-are-the-technologies-used-in-the-code)
+1. [How these technologies work](#how-these-technologies-work)
+1. [What means each a specific piece or code](#what-means-each-a-specific-piece-or-code)
+1. [Which is the purpose of a specific Java annotation](#which-is-the-purpose-of-a-specific-java-annotation)
 
 ## How to build the code
 
@@ -58,7 +60,26 @@ cd lab1-git-race/src/main/docker
 docker-compose -f redis.yml up
 ```
 
-This will start a Redis instance on port 6379.
+This will start a Redis instance on port 6379 (check `redis.yml` if you need to change it).
+
+## Using Redis in your application
+
+Here is an example usage of Redis:
+```Java
+public class Example {
+    /** your storage */
+    @Autowired
+    private StringRedisTemplate sharedData;
+
+    public String example(...) {
+        /** write a key/value pair */
+        String value = "hello";
+        sharedData.opsForValue().set("key", value);
+        /** read a key */
+        String readValue = sharedData.opsForValue().get("key");
+    }
+}
+```
 
 ## Which are the technologies used in the code
 
