@@ -93,10 +93,21 @@ id 'io.spring.dependency-management' version '1.0.8.RELEASE'
 
 implementation 'org.springframework.boot:spring-boot-starter-web'
 ```
+4. This is the initial application of Spring Boot.
 
+5. Now you can add the actions that are triggered when making requests to endpoints.
 
 ## What means each a specific piece or code
 
 ## Which is the purpose of a specific Java annotation
+### @Controller
+As spring boot it follows the architecture Model-View-Controller, @Controller annotation indicates that the annotated class is a controller. It is a specialization of @Component and is autodetected through classpath scanning. It is typically used in combination with annotated handler methods based on the @RequestMapping annotation.
+In short, it serves to indicate that it is the controller class of the architecture.
+
+### @GetMapping("/")
+@GetMapping annotation maps HTTP GET requests onto specific handler methods. It is a composed annotation that acts as a shortcut for @RequestMapping(method = RequestMethod.GET).
+If the argument is "/", it means that the method whose annotation is @GetMapping("/") will be triggered when a request is made to the "root" of the web.
+If the argument is of the type "string/string...etc", it means that the method whose annotation is @GetMapping("string/string...") will be triggered when a request is made to this endpoint of the web.
+
 
 
