@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Map;
+import java.util.GregorianCalendar;
 
 import java.lang.IllegalStateException;
 import java.lang.NullPointerException;
@@ -18,6 +20,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 import javax.servlet.http.HttpServletRequest;
+
 
 @Controller
 public class HelloController {
@@ -31,10 +34,27 @@ public class HelloController {
     @Value("${app.message:Hello World}")
     private String message;
     private Date last_time = new Date();
+    private Date deadline = new GregorianCalendar(2019, Calendar.OCTOBER, 25, 23, 59, 59).getTime();
     private String last_ip = "0.0.0.0";
     
     @Autowired
     private HttpServletRequest request;
+
+    private long getSecondsLeft(long difference){
+        return difference/1000%60;
+    }
+
+    private long getMinutesLeft(long difference){
+        return difference/(1000*60)%60;
+    }
+
+    private long getHoursLeft(long difference){
+        return difference/(1000*60*60)%24;
+    }
+
+    private long getDaysLeft(long difference){
+        return difference/(1000*60*60*24);
+    }
 
     /**
      * Application welcome page.
@@ -82,6 +102,18 @@ public class HelloController {
             logger.debug("Request object is not valid");
         }
         model.put("message", message);
+        /** Sets date of deadline */
+        model.put("deadline", deadline);
+        long countdownDifference = deadline.getTime() - last_time.getTime();
+        /** Sets seconds left to deadline */
+        model.put("secondsLeft", getSecondsLeft(countdownDifference));
+        /** Sets minutes left to deadline */
+        model.put("minutesLeft", getMinutesLeft(countdownDifference));
+        /** Sets hours left to deadline */
+        model.put("hoursLeft", getHoursLeft(countdownDifference));
+        /** Sets days left to deadline */
+        model.put("daysLeft", getDaysLeft(countdownDifference));
+
         /** Renders "wellcome" view using "model" attributes */
         return "wellcome";
     }
