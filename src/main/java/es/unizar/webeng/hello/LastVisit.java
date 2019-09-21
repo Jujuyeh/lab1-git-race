@@ -27,11 +27,11 @@ public class LastVisit {
         // Check if savedTime exists on sharedData
         String lastVisitTime = sharedData.opsForValue().get("savedTime");
         if (lastVisitTime == null) {
-            // No data, it is the user's first visit
-            model.put("displayText", "This is your first visit to this page! Welcome!");
+            // It's the user's first time
+            model.put("visitTime", "This is your first time! Welcome!");
         } else {
             // Display the last visit time
-            model.put("displayText", "Your last visit to this page was on " + lastVisitTime);
+            model.put("visitTime", lastVisitTime);
         }
         // Save time info. for the user's next visit
         Date currentTime = new Date();

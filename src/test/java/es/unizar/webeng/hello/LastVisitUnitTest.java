@@ -31,10 +31,10 @@ public class LastVisitUnitTest {
 
     @Test
     public void testLastVisit() throws Exception {
-	given(stringRedisTemplate.opsForValue()).willReturn(valueOperations);
+	    given(stringRedisTemplate.opsForValue()).willReturn(valueOperations);
         this.mvc.perform(get("/visit")).
                 andExpect(status().isOk()).
-                andExpect(model().attributeExists("displayText"));
+                andExpect(model().attributeExists("visitTime"));
     }
 
 }
