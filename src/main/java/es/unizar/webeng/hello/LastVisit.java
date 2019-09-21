@@ -22,7 +22,7 @@ public class LastVisit {
     /**
      * Basic application that tells you whether it is the first
      * time you visit the page or not. If it isn't your first visit,
-     * it also tells you the 
+     * it also tells you the time of said visit.
      * 
      * @param model  the attributes for rendering, not null
      * @return the view name
