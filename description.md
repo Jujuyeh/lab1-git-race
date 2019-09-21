@@ -48,8 +48,52 @@ gradle bootRun
 Refer to [Apache Tomcat documentation](https://tomcat.apache.org/tomcat-8.0-doc/deployer-howto.html) about how to deploy a WAR file, once [deliverables have been built](#how-to-build-the-code).
 
 ## Which are the technologies used in the code
+### Spring
+Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can "just run".
+
+We take an opinionated view of the Spring platform and third-party libraries so you can get started with minimum fuss. Most Spring Boot applications need very little Spring configuration.
+
+In fact, a professor of Web Engineering demonstrated how to mount URL Shortener in less than 5 minutes with Spring Boot.
+
+#### Some advantages over using spring
+* It is very easy to develop Spring Based applications with Java or Groovy.
+* It reduces lots of development time and increases productivity.
+* It provides Embedded HTTP servers like Tomcat, Jetty etc. to develop and test our web applications very easily.
+* It provides CLI (Command Line Interface) tool to develop and test Spring Boot(Java or Groovy) Applications from command prompt very easily and quickly.
+* And much more.
+
+The sources used and where much more information can be found:
+* [spring.io](https://spring.io/projects/spring-boot)
+* [hwww.journaldev.com/7969/spring-boot-tutorial](https://www.journaldev.com/7969/spring-boot-tutorial)
 
 ## How these technologies work
+### To start a project with Spring boot
+#### Prerequisites
+1. We are going to use the gradle tool, so it must be installed.
+
+#### Create Spring Boot proyect
+1. Create gradle proyect
+```bash
+gradle init
+```
+Let's select the desired options, using java as language.
+2. Transform into a Spring Boot Web application
+Edit the class App at src/... and adds the following imports:
+```java
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+```
+Above the definition of the App function adds : @SpringBootApplication
+And finally, within the main function write SpringApplication.run(App.class, args);
+3. Editing the gradle builder
+Add the following plugins and dependencies:
+```java
+id 'org.springframework.boot' version '2.1.8.RELEASE'
+id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+
+implementation 'org.springframework.boot:spring-boot-starter-web'
+```
+
 
 ## What means each a specific piece or code
 
