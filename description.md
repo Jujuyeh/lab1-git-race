@@ -78,14 +78,15 @@ The sources used and where much more information can be found:
 
 #### Create Spring Boot proyect
 
-1. Create gradle project
+1. Create gradle proyect
 
-```bash
-gradle init
-```
+    ```bash
+    gradle init
+    ```
 
-Let's select the desired options, using java as language.
-2. Transform into a Spring Boot Web application
+    Let's select the desired options, using java as language.
+
+1. Transform into a Spring Boot Web application
 Edit the class App at src/... and adds the following imports:
 
 ```java
@@ -94,20 +95,21 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 ```
 
 Above the definition of the App function adds : @SpringBootApplication
-And finally, within the main function write SpringApplication.run(App.class, args);
-3. Editing the gradle builder
+And finally, within the main function write `SpringApplication.run(App.class, args);
+
+1. Editing the gradle builder
 Add the following plugins and dependencies:
 
-```java
-id 'org.springframework.boot' version '2.1.8.RELEASE'
-id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    ```java
+    id 'org.springframework.boot' version '2.1.8.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
 
-implementation 'org.springframework.boot:spring-boot-starter-web'
-```
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    ```
 
-4. This is the initial application of Spring Boot.
+1. This is the initial application of Spring Boot.
 
-5. Now you can add the actions that are triggered when making requests to endpoints.
+1. Now you can add the actions that are triggered when making requests to endpoints.
 
 ## What means each a specific piece or code
 
