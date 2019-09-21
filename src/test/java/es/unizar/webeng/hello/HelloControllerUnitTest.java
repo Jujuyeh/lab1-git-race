@@ -15,6 +15,7 @@ import java.util.GregorianCalendar;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.lessThanOrEqualTo;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -113,4 +114,34 @@ public class HelloControllerUnitTest {
         assertEquals(expectedDeadline, map.get("deadline"));
     }
 
+    /** 
+     * Checks countdown values
+     */
+    @Test
+    public void testCountdown() throws Exception {
+        HashMap<String, Object> map = new HashMap<>();
+        String view = controller.welcome(map);
+        /** Checks if controller uses "wellcome" view */
+        assertThat(view, is("wellcome"));
+        /** Checks if deadline exists */
+        assertThat(map.containsKey("deadline"), is(true));
+        /** Checks if real time is before deadline*/
+        if(((Date)map.get("last_time")).getTime() <= ((Date)map.get("deadline")).getTime()){
+            /** Checks if secondsLeft exists and is valid */
+            assertThat(map.containsKey("secondsLeft"), is(true));
+            assertTrue("secondsLeft must less or equal to 60", (long)map.get("secondsLeft") <= ((long)60));
+            assertTrue("secondsLeft must be at least 0", (long)map.get("secondsLeft") >= ((long)0));
+            /** Checks if minutesLeft exists and is valid */
+            assertThat(map.containsKey("minutesLeft"), is(true));
+            assertTrue("minutesLeft must less or equal to 60", (long)map.get("minutesLeft") <= ((long)60));
+            assertTrue("minutesLeft must be at least 0", (long)map.get("minutesLeft") >= ((long)0));
+            /** Checks if hoursLeft exists and is valid */
+            assertThat(map.containsKey("hoursLeft"), is(true));
+            assertTrue("hoursLeft must less or equal to 24", (long)map.get("hoursLeft") <= ((long)24));
+            assertTrue("hoursLeft must be at least 0", (long)map.get("hoursLeft") >= ((long)0));
+            /** Checks if daysLeft exists and is valid */
+            assertThat(map.containsKey("daysLeft"), is(true));
+            assertTrue("daysLeft must be at least 0", (long)map.get("daysLeft") >= ((long)0));
+        }
+    }
 }
