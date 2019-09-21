@@ -25,4 +25,11 @@ user@${hostname}:~$ ${message}</kbd>
 <%-- Links to JQuery JavaScript library as a webjar dependency --%>
 <script type="text/javascript" src="webjars/jquery/2.1.4/jquery.min.js"></script>
 </body>
+
+
+
+    <div style="position: absolute; bottom: 5px; background-color: ${color}">
+     ${uagent}
+    </div>
+
 </html>

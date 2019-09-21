@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.Date;
@@ -32,6 +33,7 @@ public class HelloController {
     private String message;
     private Date last_time = new Date();
     private String last_ip = "0.0.0.0";
+    private String userAgent;
     
     @Autowired
     private HttpServletRequest request;
@@ -43,7 +45,7 @@ public class HelloController {
      * @return the view name
      */
     @GetMapping("/")
-    public String welcome(Map<String, Object> model) {
+    public String welcome(Map<String, Object> model, @CookieValue(value= "yay", required=false) String yay) {
         /** Sets "os" and "version" from system information */
         model.put("os", System.getProperty("os.name"));
         model.put("version", System.getProperty("os.version"));
@@ -83,6 +85,19 @@ public class HelloController {
         }
         model.put("message", message);
         /** Renders "wellcome" view using "model" attributes */
+        
+        userAgent = request.getHeader("User-Agent");
+        model.put("uagent", userAgent);
+        
+
+        if (yay == null) {
+        	model.put("color", "red");
+        }
+        else {
+        	return "redirect:https://github.com/UNIZAR-30246-WebEngineering/lab1-git-race";
+        	
+        }
+                
         return "wellcome";
     }
 

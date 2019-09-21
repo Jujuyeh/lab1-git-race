@@ -36,7 +36,8 @@ public class HelloControllerUnitTest {
     @Test
     public void testMessage() throws Exception {
         HashMap<String, Object> map = new HashMap<>();
-        String view = controller.welcome(map);
+        String cookie = new String();
+        String view = controller.welcome(map, cookie);
         /** Checks if controller uses "wellcome" view */
         assertThat(view, is("wellcome"));
         /** Checks if message exists */
@@ -51,7 +52,8 @@ public class HelloControllerUnitTest {
     @Test
     public void testTime() throws Exception {
         HashMap<String, Object> map = new HashMap<>();
-        String view = controller.welcome(map);
+        String cookie = new String();
+        String view = controller.welcome(map, cookie);
         /** Checks if controller uses "wellcome" view */
         assertThat(view, is("wellcome"));
         /** Checks if time exists */
@@ -66,7 +68,8 @@ public class HelloControllerUnitTest {
     @Test
     public void testSystem() throws Exception {
         HashMap<String, Object> map = new HashMap<>();
-        String view = controller.welcome(map);
+        String cookie = new String();
+        String view = controller.welcome(map, cookie);
         /** Checks if controller uses "wellcome" view */
         assertThat(view, is("wellcome"));
         /** Checks if data exists and is not null */
@@ -84,7 +87,8 @@ public class HelloControllerUnitTest {
     @Test
     public void testClient() throws Exception {
         HashMap<String, Object> map = new HashMap<>();
-        String view = controller.welcome(map);
+        String cookie = new String();
+        String view = controller.welcome(map,cookie);
         /** Checks if controller uses "wellcome" view */
         assertThat(view, is("wellcome"));
         /** Checks if data exists and is valid */
