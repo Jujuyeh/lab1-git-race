@@ -18,6 +18,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Controller
 public class HelloController {
@@ -87,7 +88,9 @@ public class HelloController {
         model.put("message", message);
 
         /* It adds one to the visits of the web */
-        visitorCount++;
+        synchronized(this){ // We do it in an atomic way to avoid race conditions.
+            visitorCount++;
+        }
         model.put("visitorCount", visitorCount);
         
         /** Renders "wellcome" view using "model" attributes */
