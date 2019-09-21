@@ -87,18 +87,18 @@ The sources used and where much more information can be found:
     Let's select the desired options, using java as language.
 
 1. Transform into a Spring Boot Web application
-Edit the class App at src/... and adds the following imports:
+    Edit the class App at src/... and adds the following imports:
 
-```java
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-```
+    ```java
+    import org.springframework.boot.SpringApplication;
+    import org.springframework.boot.autoconfigure.SpringBootApplication;
+    ```
 
-Above the definition of the App function adds : @SpringBootApplication
-And finally, within the main function write `SpringApplication.run(App.class, args);
+    Above the definition of the App function adds : @SpringBootApplication
+    And finally, within the main function write `SpringApplication.run(App.class, args);
 
 1. Editing the gradle builder
-Add the following plugins and dependencies:
+    Add the following plugins and dependencies:
 
     ```java
     id 'org.springframework.boot' version '2.1.8.RELEASE'
