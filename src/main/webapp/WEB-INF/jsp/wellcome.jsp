@@ -20,6 +20,7 @@
 <kbd>${os} ${hostname} ${version} ${time} <br>
 Last login: ${last_time} from ${last_ip}<br>
 <br>Deadline is ${deadline}<br>
+${daysLeft} days, ${hoursLeft} hours, ${minutesLeft} minutes and ${secondsLeft} seconds left<br>
 <br>
 user@${hostname}:~$ ${message}</kbd>
 <%-- Links to JQuery JavaScript library as a webjar dependency --%>
