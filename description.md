@@ -166,6 +166,10 @@ The syntax of the @Value annotation is
 If the argument is "/", it means that the method whose annotation is @GetMapping("/") will be triggered when a request is made to the "root" of the web.
 If the argument is of the type "string/string...etc", it means that the method whose annotation is @GetMapping("string/string...") will be triggered when a request is made to this endpoint of the web.
 
+### @Configuration
+The @ Configuration annotation is used to indicate that the class that follows it, has one or more @Bean methods. The @Bean annotation defines objects that are 
+managed by the Spring Container.
+
 
 ## How to implement code following TDD best practices
 
@@ -180,6 +184,5 @@ These are the steps of TDD development cycle:
 5. Refactor your code: now that you know that your code works, you may want to rewrite some parts to make it more legible or better structured. After your changes, run all your tests so you know that you have not broken the code. Now it is time to go back to step 1 and add a new test for a new test case.
 
 You should avoid some practices, for example, dependency between tests. More documentation about TDD can be found [here](https://en.wikipedia.org/wiki/Test-driven_development).
->>>>>>> upstream/master
 
 Note that following TDD practices might not sound very useful when adding a small and simple feature, but adopting this practice is very helpful in a complex project, in which each time you add a piece of code it may break the rest of it and make it difficult to detect where the error is.
