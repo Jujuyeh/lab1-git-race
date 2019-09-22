@@ -170,4 +170,16 @@ public class HelloControllerUnitTest {
         /** Checks if daysLeft has a valid value */
         assertTrue("daysLeft must be at least 0", daysLeftLocal >= 0L);
     }
+
+    @Test
+    public void testCount() throws Exception{
+        HashMap<String, Object> map = new HashMap<>();
+        String view = controller.welcome(map);
+        /** Checks if controller uses "wellcome" view */
+        assertThat(view, is("wellcome"));
+        /**Checks if data exist and is valid */
+        assertThat(map.containsKey("visitorCount"), is(true));
+        assertNotNull(map.get("visitorCount"));
+        assertTrue("The value of visitor count must be greater than 0", (int)map.get("visitorCount") > 0);
+    }
 }

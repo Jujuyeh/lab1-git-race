@@ -20,6 +20,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.concurrent.atomic.AtomicInteger;
 
 
 @Controller
@@ -36,6 +37,9 @@ public class HelloController {
     private Date last_time = new Date();
     private Date deadline = new GregorianCalendar(2019, Calendar.OCTOBER, 25, 23, 59, 59).getTime();
     private String last_ip = "0.0.0.0";
+
+    @Value("${app.visitorCount}")
+    private int visitorCount;
     
     @Autowired
     private HttpServletRequest request;
@@ -102,6 +106,13 @@ public class HelloController {
             logger.debug("Request object is not valid");
         }
         model.put("message", message);
+
+        /* It adds one to the visits of the web */
+        synchronized(this){ // We do it in an atomic way to avoid race conditions.
+            visitorCount++;
+        }
+        model.put("visitorCount", visitorCount);
+
         /** Sets date of deadline */
         model.put("deadline", deadline);
         long countdownDifference = deadline.getTime() - last_time.getTime();
@@ -113,7 +124,6 @@ public class HelloController {
         model.put("hoursLeft", getHoursLeft(countdownDifference));
         /** Sets days left to deadline */
         model.put("daysLeft", getDaysLeft(countdownDifference));
-
         /** Renders "wellcome" view using "model" attributes */
         return "wellcome";
     }
