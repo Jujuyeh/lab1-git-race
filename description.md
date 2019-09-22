@@ -167,9 +167,9 @@ If the argument is "/", it means that the method whose annotation is @GetMapping
 If the argument is of the type "string/string...etc", it means that the method whose annotation is @GetMapping("string/string...") will be triggered when a request is made to this endpoint of the web.
 
 ### @Configuration
+
 The @ Configuration annotation is used to indicate that the class that follows it, has one or more @Bean methods. The @Bean annotation defines objects that are 
 managed by the Spring Container.
-
 
 ## How to implement code following TDD best practices
 
