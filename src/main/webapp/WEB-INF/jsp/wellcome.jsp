@@ -29,7 +29,9 @@ ${daysLeft} days, ${hoursLeft} hours, ${minutesLeft} minutes and ${secondsLeft} 
 <br>
 Do you wanna know if you would survive thanos snap?? ->> <a href="./thanos">CLICK HERE</a><br>
 <br>
-user@${hostname}:~$ ${message}</kbd>
+user@${hostname}:~$ ${message}<br>
+<br>
+Last commit(${commitDate}): ${commitMessage}</kbd>
 <%-- Links to JQuery JavaScript library as a webjar dependency --%>
 <script type="text/javascript" src="webjars/jquery/2.1.4/jquery.min.js"></script>
 </body>
