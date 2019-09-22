@@ -9,6 +9,7 @@
 1. [How these technologies work](#how-these-technologies-work)
 1. [What means each a specific piece or code](#what-means-each-a-specific-piece-or-code)
 1. [Which is the purpose of a specific Java annotation](#which-is-the-purpose-of-a-specific-java-annotation)
+1. [How to implement code following TDD best practices](#how-to-implement-code-following-tdd-best-practices)
 
 ## How to build the code
 
@@ -89,7 +90,7 @@ public class Example {
 
 ### Junit4
 
-JUnit is one of the most popular testing frameworks for Java. Although JUnit5 is the newest version of the framework, JUnit4 is still used in many projects. Let's see [how it works](#how-junit4-works).
+JUnit is one of the most popular testing frameworks for Java. Although JUnit5 is the newest version of the framework, JUnit4 is still used in many projects (e.g for [TDD](#how-to-implement-code-following-tdd-best-practices)). Let's see [how it works](#how-junit4-works).
 
 ### Spring
 
@@ -108,6 +109,7 @@ In fact, a professor of Web Engineering demonstrated how to mount URL Shortener 
 * And much more.
 
 The sources used and where much more information can be found:
+
 * [spring.io](https://spring.io/projects/spring-boot)
 * [hwww.journaldev.com/7969/spring-boot-tutorial](https://www.journaldev.com/7969/spring-boot-tutorial)
   
@@ -129,6 +131,7 @@ For further information, you can visit <https://github.com/junit-team/junit4/wik
 ### To start a project with Spring boot
 
 #### Prerequisites
+
 1. We are going to use the gradle tool, so it must be installed.
 
 #### Create Spring Boot proyect
@@ -193,12 +196,24 @@ The syntax of the @Value annotation is
 @Value("${property_key_name}")
 ```
 
-
 ### @GetMapping("/")
 
 @GetMapping annotation maps HTTP GET requests onto specific handler methods. It is a composed annotation that acts as a shortcut for @RequestMapping(method = RequestMethod.GET).
 If the argument is "/", it means that the method whose annotation is @GetMapping("/") will be triggered when a request is made to the "root" of the web.
 If the argument is of the type "string/string...etc", it means that the method whose annotation is @GetMapping("string/string...") will be triggered when a request is made to this endpoint of the web.
 
+## How to implement code following TDD best practices
 
+Coding following TDD practices involves creating code using a very short development cycle. When you use TDD, you must write a unit test (e.g. using JUnit libraries) before you implement the actual funcionality. Therefore, your goal is passing all the tests. When you have written tests that verify code works properly, and all these tests pass, you know your code works as you intented to.
 
+These are the steps of TDD development cycle:
+
+1. Add a test: create a test for every new feature you want to add to the code. Each tests may match a test case (seen in Software Engineering and other related subjects).
+2. Run all the tests, the last test added should fail: All the test previously added should pass, but the one added in step 1 should fail. Otherwise, something is wrong. If you are following well these steps, this is not something likely to happen.
+3. Write the code so the test passes: Following the theory, you must write the smallest piece of code so the test passes. This might sound useless, but, for example, if in the first test you are testing a test case that returns 1, you can simply write `return 1;` in the code, although you know in the future you may change the code. Keep in mind that when you already have several tests, the new test has to pass, but the older tests too.
+4. Run all the tests: Now is the moment when you verify that the piece of code you have written is correct. Every test (the new one and the older ones) has to pass.
+5. Refactor your code: now that you know that your code works, you may want to rewrite some parts to make it more legible or better structured. After your changes, run all your tests so you know that you have not broken the code. Now it is time to go back to step 1 and add a new test for a new test case.
+
+You should avoid some practices, for example, dependency between tests. More documentation about TDD can be found [here](https://en.wikipedia.org/wiki/Test-driven_development).
+
+Note that following TDD practices might not sound very useful when adding a small and simple feature, but adopting this practice is very helpful in a complex project, in which each time you add a piece of code it may break the rest of it and make it difficult to detect where the error is.
