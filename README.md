@@ -5,4 +5,8 @@ Please, go to the [Wiki](https://github.com/UNIZAR-30246-WebEngineering/lab1-git
 User name | NIA | Travis-CI|Score
 ----------|-----|----------|-----
 [UNIZAR-30246-WebEngineering](https://github.com/UNIZAR-30246-WebEngineering/lab1-git-race) |30246 | [![Build Status](https://travis-ci.org/UNIZAR-30246-WebEngineering/lab1-git-race.svg)](https://travis-ci.org/UNIZAR-30246-WebEngineering/lab1-git-race) |
+[Víctor M. Batlle](https://github.com/vmbatlle/lab1-git-race) | 736478 | [![Build Status](https://travis-ci.org/vmbatlle/lab1-git-race.svg?branch=master)](https://travis-ci.org/vmbatlle/lab1-git-race) | :gift:
+[Javier G. Garcés](https://github.com/JaviBite/lab1-git-race)| 738866 | [![Build Status](https://travis-ci.org/JaviBite/lab1-git-race.svg?branch=master)](https://travis-ci.org/JaviBite/lab1-git-race) | :gift: |
+[Victor Peñasco](https://github.com/vpec/lab1-git-race) | 741294 | [![Build Status](https://travis-ci.org/vpec/lab1-git-race.svg)](https://travis-ci.org/vpec/lab1-git-race) | :gift: |
+[Sergio Herrero](https://github.com/sherrero96/lab1-git-race) | 698521 | [![Build Status](https://travis-ci.org/sherrero96/lab1-git-race.svg)](https://travis-ci.org/sherrero96/lab1-git-race) | :gift: |
 [Guillermo Pérez Gª de Carellán](https://github.com/Guillerm097/lab1-git-race) | 721854 | [![Build Status](https://travis-ci.org/Guillerm097/lab1-git-race.svg)](https://travis-ci.org/Guillerm097/lab1-git-race)
