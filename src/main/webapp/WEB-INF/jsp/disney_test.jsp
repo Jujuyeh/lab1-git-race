@@ -3,11 +3,12 @@
 <html lang="en">
 <!-- https://freefrontend.com/css-radio-buttons/ -->
 <link href="customRadio.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/waltograph" type="text/css"/>
 <head>
     <c:choose>
         <c:when test = "${question == 0}">
             <form action = "./disney" class="form">
-                <h2>Which is your favourite season?</h2><br>
+                <h2 style="font-family:  WaltographRegular">Which is your favourite season?</h2><br>
                 <div class="inputGroup">
                     <input id="radio1" name="answer" type="radio" value="1"/>
                     <label for="radio1">Winter</label>
@@ -25,12 +26,12 @@
                     <label for="radio4">Autumn</label>
                 </div>
                 
-                <input type = "submit" value = "Next" />
+                <input style="border-radius: 25px; background: rgb(93, 209, 112)" type = "submit" value = "Next" />
             </form>
         </c:when>
         <c:when test = "${question == 1}">
             <form action = "./disney" class="form">
-                <h2>How do you define yourself?</h2><br>
+                <h2 style="font-family:  WaltographRegular">How do you define yourself?</h2><br>
                 <div class="inputGroup">
                     <input id="radio1" name="answer" type="radio" value="1"/>
                     <label for="radio1">Introvert</label>
@@ -48,12 +49,12 @@
                     <label for="radio4">Wise</label>
                 </div>
                 
-                <input type = "submit" value = "Next" />
+                <input style="border-radius: 25px; background: rgb(93, 209, 112)" type = "submit" value = "Next" />
             </form>
         </c:when>
         <c:when test = "${question == 2}">
             <form action = "./disney" class="form">
-                <h2>Where do you prefer to travel?</h2><br>
+                <h2 style="font-family:  WaltographRegular">Where do you prefer to travel?</h2><br>
                 <div class="inputGroup">
                     <input id="radio1" name="answer" type="radio" value="1"/>
                     <label for="radio1">Russia</label>
@@ -71,12 +72,12 @@
                     <label for="radio4">Mexico</label>
                 </div>
                 
-                <input type = "submit" value = "Next" />
+                <input style="border-radius: 25px; background: rgb(93, 209, 112)" type = "submit" value = "Next" />
             </form>
         </c:when>
         <c:when test = "${question == 3}">
             <form action = "./disney" class="form">
-                <h2>Which is your motto?</h2><br>
+                <h2 style="font-family:  WaltographRegular">Which is your motto?</h2><br>
                 <div class="inputGroup">
                     <input id="radio1" name="answer" type="radio" value="1"/>
                     <label for="radio1">Let it go!</label>
@@ -94,7 +95,7 @@
                     <label for="radio4">You know your path, child, now follow it.</label>
                 </div>
                 
-                <input type = "submit" value = "Next" />
+                <input style="border-radius: 25px; background: rgb(93, 209, 112)" type = "submit" value = "Next" />
             </form>
         </c:when>
     </c:choose>

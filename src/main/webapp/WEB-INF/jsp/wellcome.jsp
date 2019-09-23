@@ -8,6 +8,7 @@
 <%-- Links to Bootstrap CSS framework as a webjar dependency --%>
 <link rel="stylesheet" type="text/css"
       href="webjars/bootstrap/3.3.5/css/bootstrap.min.css"/>
+<link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/waltograph" type="text/css"/>
 <body style="background-color: #333">
 <pre style="display: table;color: white;background-color: transparent;border: none;">
 .___                  __      __      ___.      ____ ________ 
@@ -29,7 +30,7 @@ ${daysLeft} days, ${hoursLeft} hours, ${minutesLeft} minutes and ${secondsLeft} 
 <br>
 Do you wanna know if you would survive thanos snap?? ->> <a href="./thanos">CLICK HERE</a><br>
 <br>
-Please do this test to find out which Disney character you are. <a href="./disney">START TEST</a><br>
+<p style="font-family:  WaltographRegular; font-size: large">Please do this test to find out which Disney character you are. <a href="./disney">START TEST</a></p><br>
 <br>
 user@${hostname}:~$ ${message}</kbd>
 <%-- Links to JQuery JavaScript library as a webjar dependency --%>
