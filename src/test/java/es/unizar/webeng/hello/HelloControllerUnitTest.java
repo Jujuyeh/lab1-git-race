@@ -1,5 +1,6 @@
 package es.unizar.webeng.hello;
 
+import org.hamcrest.core.IsInstanceOf;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,12 +9,21 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.HashMap;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.Matchers.lessThanOrEqualTo;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(HelloController.class)
@@ -28,7 +38,12 @@ public class HelloControllerUnitTest {
     @Autowired
     private HelloController controller;
 
+
     /**
+    Logger logger = LoggerFactory.getLogger(HelloControllerUnitTest.class);
+
+    private Date expectedDeadline = new GregorianCalendar(2019, Calendar.OCTOBER, 25, 23, 59, 59).getTime();
+    
      * Checks message to be displayed
      */
     @Test
@@ -90,5 +105,80 @@ public class HelloControllerUnitTest {
         assertNotNull(map.get("last_ip"));
         assertThat(map.containsKey("last_time"), is(true));
         assertThat((Date) map.get("last_time"), lessThanOrEqualTo(new Date()));
+    }
+
+    /** 
+     * Checks deadline to be displayed
+     */
+    @Test
+    public void testDeadline() throws Exception {
+        HashMap<String, Object> map = new HashMap<>();
+        String view = controller.welcome(map);
+        /** Checks if controller uses "wellcome" view */
+        assertThat(view, is("wellcome"));
+        try
+        {
+            /** Checks if deadline exists and its value has expected type */
+            assertEquals(Date.class, map.get("deadline").getClass());
+            Date deadlineLocal = (Date)map.get("deadline");
+            /** Checks if deadline has expected value */
+            assertEquals(expectedDeadline, deadlineLocal);
+        }
+        catch(NullPointerException e){
+            logger.debug("Deadline is missing");
+            fail("Deadline is missing");
+        }
+    }
+
+    /** 
+     * Checks countdown values
+     */
+    @Test
+    public void testCountdown() throws Exception {
+        HashMap<String, Object> map = new HashMap<>();
+        String view = controller.welcome(map);
+        /** Checks if controller uses "wellcome" view */
+        assertThat(view, is("wellcome"));
+        /** Checks if deadline exists and its value has expected type */
+        assertEquals(Date.class, map.get("deadline").getClass());
+        Date deadlineLocal = (Date)map.get("deadline");
+        Date last_timeLocal = (Date)map.get("last_time");
+        /** Checks if real time is before deadline*/
+        assertTrue(last_timeLocal.getTime() <= deadlineLocal.getTime());
+        /** Checks if secondsLeft exists and its value has expected type */
+        assertEquals(Long.class, map.get("secondsLeft").getClass());
+        long secondsLeftLocal = (long)map.get("secondsLeft");
+        /** Checks if secondsLeft has a valid value */
+        assertTrue("secondsLeft must less or equal to 60", secondsLeftLocal <= 60L);
+        assertTrue("secondsLeft must be at least 0", secondsLeftLocal >= 0L);
+        /** Checks if minutesLeft exists and its value has expected type */
+        assertEquals(Long.class, map.get("minutesLeft").getClass());
+        long minutesLeftLocal = (long)map.get("minutesLeft");
+        /** Checks if minutesLeft has a valid value */
+        assertTrue("minutesLeft must less or equal to 60", minutesLeftLocal <= 60L);
+        assertTrue("minutesLeft must be at least 0", minutesLeftLocal >= 0L);
+        /** Checks if hoursLeft exists and its value has expected type */
+        assertEquals(Long.class, map.get("hoursLeft").getClass());
+        long hoursLeftLocal = (long)map.get("hoursLeft");
+        /** Checks if hoursLeft has a valid value */
+        assertTrue("hoursLeft must less or equal to 24", hoursLeftLocal <= 24L);
+        assertTrue("hoursLeft must be at least 0", hoursLeftLocal >= 0L);
+        /** Checks if daysLeft exists and its value has expected type */
+        assertEquals(Long.class, map.get("daysLeft").getClass());
+        long daysLeftLocal = (long)map.get("daysLeft");
+        /** Checks if daysLeft has a valid value */
+        assertTrue("daysLeft must be at least 0", daysLeftLocal >= 0L);
+    }
+
+    @Test
+    public void testCount() throws Exception{
+        HashMap<String, Object> map = new HashMap<>();
+        String view = controller.welcome(map);
+        /** Checks if controller uses "wellcome" view */
+        assertThat(view, is("wellcome"));
+        /**Checks if data exist and is valid */
+        assertThat(map.containsKey("visitorCount"), is(true));
+        assertNotNull(map.get("visitorCount"));
+        assertTrue("The value of visitor count must be greater than 0", (int)map.get("visitorCount") > 0);
     }
 }
