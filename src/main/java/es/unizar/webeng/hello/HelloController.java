@@ -22,11 +22,15 @@ import java.net.UnknownHostException;
 import javax.servlet.http.HttpServletRequest;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import java.net.URL;
-import java.net.HttpURLConnection;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import org.apache.commons.lang3.StringUtils;
+import com.jcabi.github.Github;
+import com.jcabi.github.RtGithub;
+import com.jcabi.github.Coordinates;
+import com.jcabi.github.RepoCommits;
+import com.jcabi.github.RepoCommit;
+import com.jcabi.github.Repo;
+import javax.json.JsonObject;
+import java.util.Iterator;
+import java.util.HashMap;
 
 @Controller
 public class HelloController {
@@ -64,44 +68,34 @@ public class HelloController {
         return difference / (1000 * 60 * 60 * 24);
     }
 
+    /**
+     * @see https://github.jcabi.com/
+     */
     private void getGitHubInfo(Map<String, Object> model) {
-        try {
-            URL repo = new URL("https://api.github.com/repos/UNIZAR-30246-WebEngineering/lab1-git-race/commits");
-            HttpURLConnection conection = (HttpURLConnection) repo.openConnection();
-            int status = conection.getResponseCode();
-            BufferedReader in = new BufferedReader(new InputStreamReader(conection.getInputStream()));
-            String inputLine = in.readLine();
-            in.close();
-            if(inputLine != null) {
-                if(inputLine.contains("date")){
-                    String date = StringUtils.substringBetween(inputLine, "\"date\":\"", "\"");
-                    model.put("commitDate", date);
-                }
-                else {
-                    model.put("commitDate", "-");
-                }
-                if(inputLine.contains("message")){
-                    String commitmessage = StringUtils.substringBetween(inputLine, "\"message\":\"", "\"");
-                    System.out.println(commitmessage.replace("\\n", "-"));
-                    model.put("commitMessage", commitmessage.replace("\\n", "-"));
-                }
-                else {
-                    model.put("commitMessage", "-");
-                }
-            }
-            else {
-                model.put("commitDate", "-");
-                model.put("commitMessage", "-");
-            }
         /**
-         * There is a rate limit of up to 60 requests per hour, an exception is rose
-         * in case this limit is exceeded.
+         * There is a rate limit of up to 60 requests per hour, an exception is risen in
+         * case this limit is exceeded.
+         * 
          * @see https://developer.github.com/v3/#rate-limiting
          */
-        } catch (Exception e) {
-            model.put("commitDate", "-");
+        try {
+            final Github github = new RtGithub();
+            Repo repo = github.repos().get(new Coordinates.Simple("UNIZAR-30246-WebEngineering/lab1-git-race"));
+            RepoCommits commits = repo.commits();
+            Map<String, String> params = new HashMap<String, String>();
+            Iterator<RepoCommit> it = commits.iterate(params).iterator();
+            RepoCommit lastCommit = it.next();
+            RepoCommit.Smart smartRepo = new RepoCommit.Smart(lastCommit);
+            String message = smartRepo.message();
+            JsonObject json = smartRepo.json();
+            json = json.getJsonObject("commit");
+            json = json.getJsonObject("author");
+            String date = json.getString("date");
+            model.put("commitMessage", message);
+            model.put("commitDate", date);
+        } catch (Throwable t) {
             model.put("commitMessage", "-");
-            logger.debug("GitHub related error");
+            model.put("commitDate", "-");
         }
     }
 

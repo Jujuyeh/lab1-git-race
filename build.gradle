@@ -37,6 +37,7 @@ dependencies {
 
     compile 'org.springframework.boot:spring-boot-devtools'
 
-    compile 'org.apache.commons:commons-text:1.6'
+    compile 'com.jcabi:jcabi-github:1.0'
+    compile 'javax.json:javax.json-api'
 }
 
