@@ -29,6 +29,8 @@ ${daysLeft} days, ${hoursLeft} hours, ${minutesLeft} minutes and ${secondsLeft} 
 <br>
 Do you wanna know if you would survive thanos snap?? ->> <a href="./thanos">CLICK HERE</a><br>
 <br>
+Know if your NIP is a prime number <a href="./prime">CLICK</a><br>
+<br>
 user@${hostname}:~$ ${message}</kbd>
 <%-- Links to JQuery JavaScript library as a webjar dependency --%>
 <script type="text/javascript" src="webjars/jquery/2.1.4/jquery.min.js"></script>
