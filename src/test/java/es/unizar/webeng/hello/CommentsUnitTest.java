@@ -9,20 +9,13 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.mockito.ArgumentMatchers.notNull;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.hamcrest.Matchers;
-import org.hamcrest.core.IsNull;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 
 @RunWith(SpringRunner.class)
@@ -43,7 +36,6 @@ public class CommentsUnitTest {
      */
     @Test
     public void testNoComments() throws Exception {
-
         given(stringRedisTemplate.opsForValue()).willReturn(valueOperations);
         List<String> comments = new ArrayList<String>();
         comments.add("There are no comments yet");
@@ -51,14 +43,28 @@ public class CommentsUnitTest {
                 .andExpect(status().isOk())
                 .andExpect(model().attribute("comments", comments));
     }
-
+    
+    /**
+     * Checks that the response of the POST method with a valid comment is a
+     * redirect to "/comments".
+     */
     @Test
     public void testWriteComment() throws Exception {
-
         given(stringRedisTemplate.opsForValue()).willReturn(valueOperations);
         this.mvc.perform(post("/comments").param("comment", "This is a comment")
-                        .param("name", "Someone"));
-        this.mvc.perform(get("/comments")).andExpect(status().isOk());
+                        .param("name", "Someone"))
+                        .andExpect(status().is3xxRedirection())
+                        .andExpect(redirectedUrl("/comments"));
+    }
+
+    /**
+     * Checks that the response of the POST method with missing parameters is
+     * 400 (bad request).
+     */
+    @Test
+    public void testWriteInvalidComment() throws Exception {
+        given(stringRedisTemplate.opsForValue()).willReturn(valueOperations);
+        this.mvc.perform(post("/comments")).andExpect(status().isBadRequest());
     }
 
 }

@@ -27,7 +27,9 @@ public class Comments {
     private List<String> getComments() {
         try {
 
+            /** Checks if redis has the key "comments" */
             if (sharedData.hasKey("comments")) {
+
                 /** Loads the comments into a string */
                 String readValue = sharedData.opsForValue().get("comments");
 
@@ -36,9 +38,12 @@ public class Comments {
 
             } else {
                 
+                /** If redis does not have the key, it creates it */
                 List<String> comments = new ArrayList<String>();
                 String jsonInString = mapper.writeValueAsString(comments);
                 sharedData.opsForValue().set("comments", jsonInString );
+
+                /** Returns the empty array */
                 return comments;
             }
             
@@ -54,14 +59,27 @@ public class Comments {
      * @param name author of the comment.
      */
     private void insertComment(String comment, String name) {
+
+        /** Obtains the time when the comment was written */
         Date currentTime = new Date();
+
+        /** Constructs the string that will be saved in redis */
         comment = "<font size=\"+1\">" + comment + "</font>";
         comment += "<br>Written by " + name + " on " + currentTime.toString();
+
+        /** Obtains the saved comments in redis */
         List<String> comments = getComments();
+
+        /** Adds the new comment to the list of comments retrieved */
         comments.add(comment);
         try {
+
+            /** Converts the list into a string */
             String jsonInString = mapper.writeValueAsString(comments);
+
+            /** Saves the string to redis */
             sharedData.opsForValue().set("comments", jsonInString );
+
         } catch (Exception e) {
             System.out.println("Error inserting comment");
         }
@@ -76,14 +94,15 @@ public class Comments {
     @GetMapping("/comments")
     public String welcome(Map<String, Object> model) {
 
-        /** Loads comments saved on redis */
+        /** Loads the comments saved on redis */
         List<String> comments = getComments();
 
-        /** If there are no comments, show a custom message */
+        /** If there are no comments, it will save a custom comment */
         if (comments.isEmpty()) {
             comments.add("There are no comments yet");
         }
-        System.out.println(comments);
+        
+        /** Adds the list of comments to "model" */
         model.put("comments", comments);
 
         /** Renders "comments" view using "model" attributes */
@@ -99,9 +118,13 @@ public class Comments {
      */
     @PostMapping("/comments") 
     public String newComment(Map<String, Object> model, 
-                            @RequestParam("comment") String comment, 
-                            @RequestParam("name") String name) {
+                            @RequestParam(name=  "comment", required = true) String comment, 
+                            @RequestParam(name = "name", required = true) String name) {
+
+        /** Stores the new comment to redis */
         insertComment(comment, name);
+
+        /** Redirects to "/comments" */
         return "redirect:/comments";
     }
 
