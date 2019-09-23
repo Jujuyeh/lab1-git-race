@@ -45,8 +45,13 @@ public class HelloController {
      */
     private List<String> getComments() {
         try {
+
+            /** Loads the comments into a string */
             String readValue = sharedData.opsForValue().get("comments");
+
+            /** Returns the string converted in to a list of strings */
             return mapper.readValue(readValue, List.class);
+            
         } catch (Exception e) {
             System.out.println("Error obtaining comments");
             return null;
