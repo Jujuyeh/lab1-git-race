@@ -39,13 +39,14 @@ public class HelloControllerUnitTest {
     private HelloController controller;
 
 
-    /**
+    
     Logger logger = LoggerFactory.getLogger(HelloControllerUnitTest.class);
 
     private Date expectedDeadline = new GregorianCalendar(2019, Calendar.OCTOBER, 25, 23, 59, 59).getTime();
     
-     * Checks message to be displayed
-     */
+     /*
+      * Checks message to be displayed
+      */
     @Test
     public void testMessage() throws Exception {
         HashMap<String, Object> map = new HashMap<>();
@@ -113,7 +114,7 @@ public class HelloControllerUnitTest {
     @Test
     public void testDeadline() throws Exception {
         HashMap<String, Object> map = new HashMap<>();
-        String view = controller.welcome(map);
+        String view = controller.welcome(null , map, "");
         /** Checks if controller uses "wellcome" view */
         assertThat(view, is("wellcome"));
         try
@@ -136,7 +137,7 @@ public class HelloControllerUnitTest {
     @Test
     public void testCountdown() throws Exception {
         HashMap<String, Object> map = new HashMap<>();
-        String view = controller.welcome(map);
+        String view = controller.welcome(null , map, "");
         /** Checks if controller uses "wellcome" view */
         assertThat(view, is("wellcome"));
         /** Checks if deadline exists and its value has expected type */
@@ -173,7 +174,7 @@ public class HelloControllerUnitTest {
     @Test
     public void testCount() throws Exception{
         HashMap<String, Object> map = new HashMap<>();
-        String view = controller.welcome(map);
+        String view = controller.welcome(null , map, "");
         /** Checks if controller uses "wellcome" view */
         assertThat(view, is("wellcome"));
         /**Checks if data exist and is valid */
