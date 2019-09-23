@@ -30,8 +30,7 @@ import org.slf4j.LoggerFactory;
 public class HelloControllerUnitTest {
 
     /**
-     * Sets message value from properties
-     * or default string if not defined
+     * Sets message value from properties or default string if not defined
      */
     @Value("${app.message:Hello World}")
     private String message;
@@ -39,18 +38,19 @@ public class HelloControllerUnitTest {
     @Autowired
     private HelloController controller;
 
+
+    
     Logger logger = LoggerFactory.getLogger(HelloControllerUnitTest.class);
 
     private Date expectedDeadline = new GregorianCalendar(2019, Calendar.OCTOBER, 25, 23, 59, 59).getTime();
-
-
-    /** 
-     * Checks message to be displayed
-     */
+    
+     /*
+      * Checks message to be displayed
+      */
     @Test
     public void testMessage() throws Exception {
         HashMap<String, Object> map = new HashMap<>();
-        String view = controller.welcome(map);
+        String view = controller.welcome(null, map, "");
         /** Checks if controller uses "wellcome" view */
         assertThat(view, is("wellcome"));
         /** Checks if message exists */
@@ -58,29 +58,29 @@ public class HelloControllerUnitTest {
         /** Checks if message matches expected value */
         assertThat(map.get("message"), is(message));
     }
-    
-    /** 
+
+    /**
      * Checks time to be displayed
      */
     @Test
     public void testTime() throws Exception {
         HashMap<String, Object> map = new HashMap<>();
-        String view = controller.welcome(map);
+        String view = controller.welcome(null, map, "");
         /** Checks if controller uses "wellcome" view */
         assertThat(view, is("wellcome"));
         /** Checks if time exists */
         assertThat(map.containsKey("time"), is(true));
         /** Checks if time is before current time */
-        assertThat((Date)map.get("time"), lessThanOrEqualTo(new Date()));
+        assertThat((Date) map.get("time"), lessThanOrEqualTo(new Date()));
     }
-    
-    /** 
+
+    /**
      * Checks server system information
      */
     @Test
     public void testSystem() throws Exception {
         HashMap<String, Object> map = new HashMap<>();
-        String view = controller.welcome(map);
+        String view = controller.welcome(null, map, "");
         /** Checks if controller uses "wellcome" view */
         assertThat(view, is("wellcome"));
         /** Checks if data exists and is not null */
@@ -91,21 +91,21 @@ public class HelloControllerUnitTest {
         assertThat(map.containsKey("hostname"), is(true));
         assertNotNull(map.get("hostname"));
     }
-    
-    /** 
+
+    /**
      * Checks client information
      */
     @Test
     public void testClient() throws Exception {
         HashMap<String, Object> map = new HashMap<>();
-        String view = controller.welcome(map);
+        String view = controller.welcome(null, map, "");
         /** Checks if controller uses "wellcome" view */
         assertThat(view, is("wellcome"));
         /** Checks if data exists and is valid */
         assertThat(map.containsKey("last_ip"), is(true));
         assertNotNull(map.get("last_ip"));
         assertThat(map.containsKey("last_time"), is(true));
-        assertThat((Date)map.get("last_time"), lessThanOrEqualTo(new Date()));
+        assertThat((Date) map.get("last_time"), lessThanOrEqualTo(new Date()));
     }
 
     /** 
@@ -114,7 +114,7 @@ public class HelloControllerUnitTest {
     @Test
     public void testDeadline() throws Exception {
         HashMap<String, Object> map = new HashMap<>();
-        String view = controller.welcome(map);
+        String view = controller.welcome(null , map, "");
         /** Checks if controller uses "wellcome" view */
         assertThat(view, is("wellcome"));
         try
@@ -137,7 +137,7 @@ public class HelloControllerUnitTest {
     @Test
     public void testCountdown() throws Exception {
         HashMap<String, Object> map = new HashMap<>();
-        String view = controller.welcome(map);
+        String view = controller.welcome(null , map, "");
         /** Checks if controller uses "wellcome" view */
         assertThat(view, is("wellcome"));
         /** Checks if deadline exists and its value has expected type */
@@ -174,7 +174,7 @@ public class HelloControllerUnitTest {
     @Test
     public void testCount() throws Exception{
         HashMap<String, Object> map = new HashMap<>();
-        String view = controller.welcome(map);
+        String view = controller.welcome(null , map, "");
         /** Checks if controller uses "wellcome" view */
         assertThat(view, is("wellcome"));
         /**Checks if data exist and is valid */
