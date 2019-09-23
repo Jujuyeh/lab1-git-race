@@ -53,4 +53,16 @@ public class PrimeNumberTest {
         assertThat(map.get("msg"), is("Your nip 222222 is not a prime number"));
     }
 
+    /**
+     * Check that the multiples of NIP are correct
+     */
+    @Test
+    public void testNip_multiples_PrimeNumber() throws Exception {
+        HashMap<String, Object> map = new HashMap<>();
+        String view = controller.prime("6", map);
+        assertThat(view, is("prime2"));
+        assertThat(map.containsKey("multiplos"), is(true));
+        assertThat(map.get("multiplos"), is("1, 2, 3, 6"));
+    }
+
 }
