@@ -171,4 +171,32 @@ public class HelloController {
 
     }
 
+    /**
+     * Application jokes page.
+     *
+     * @param model  the attributes for rendering, not null
+     * @return the view name
+     */
+    @GetMapping("/JavaJoke")
+    public String javaJoke(Map<String, Object> model) {
+        /** Get the day of the current date */
+        /** @see https://www.baeldung.com/java-year-month-day */
+        Date today = new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(today);
+
+        /** Sets the "intro" */
+        model.put("intro", "Java joke of the day: ");
+
+        /** If the day is even, the first joke is shown */
+        if (calendar.get(Calendar.DAY_OF_MONTH) % 2 == 0) {
+            model.put("joke", "Why are communists bad Java programmers? Because they don't like classes.");
+        }
+        else {
+            model.put("joke", "I made a Java program to tell me my purpose. It keeps saying null pointer exception, so it works great.");
+        }
+
+        /** Renders "joke" view using "model" attributes */
+        return "joke";
+    }
 }
