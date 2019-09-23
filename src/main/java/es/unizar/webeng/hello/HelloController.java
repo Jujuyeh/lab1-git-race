@@ -4,18 +4,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Map;
 import java.util.GregorianCalendar;
-import java.util.List;
+
 import java.lang.IllegalStateException;
 import java.lang.NullPointerException;
 
@@ -23,9 +20,6 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 import javax.servlet.http.HttpServletRequest;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import java.util.concurrent.atomic.AtomicInteger;
 
 
@@ -34,46 +28,6 @@ public class HelloController {
     
     Logger logger = LoggerFactory.getLogger(HelloController.class);
     
-    ObjectMapper mapper = new ObjectMapper();
-
-    @Autowired
-    private StringRedisTemplate sharedData;
-
-    /**
-     * Returns the list of all the comments saved on redis.
-     * @return List of comments saved on redis.
-     */
-    private List<String> getComments() {
-        try {
-
-            /** Loads the comments into a string */
-            String readValue = sharedData.opsForValue().get("comments");
-
-            /** Returns the string converted in to a list of strings */
-            return mapper.readValue(readValue, List.class);
-            
-        } catch (Exception e) {
-            System.out.println("Error obtaining comments");
-            return null;
-        }
-    }
-
-    /**
-     * Stores the comment "comment" to redis.
-     * @param comment comment to store to redis.
-     */
-    private void insertComment(String comment) {
-        List<String> comments = getComments();
-        comments.add(comment);
-        try {
-            String jsonInString = mapper.writeValueAsString(comments);
-            sharedData.opsForValue().set("comments", jsonInString );
-        } catch (Exception e) {
-            System.out.println("Error inserting comment");
-        }
-    }
-
-
     /**
      * Sets message value from properties,
      * or default string if not defined.
@@ -170,30 +124,8 @@ public class HelloController {
         model.put("hoursLeft", getHoursLeft(countdownDifference));
         /** Sets days left to deadline */
         model.put("daysLeft", getDaysLeft(countdownDifference));
-
-        /** Loads comments saved on redis */
-        List<String> comments = getComments();
-
-        /** If there are no comments, show a custom message */
-        if (comments.isEmpty()) {
-            comments.add("There are no comments yet");
-        }
-        model.put("comments", comments);
-
         /** Renders "wellcome" view using "model" attributes */
         return "wellcome";
-    }
-
-    /**
-     * Stores the comment "comment" to redis.
-     * @param model the attributes for rendering, not null.
-     * @param comment comment to store to redis.
-     * @return redirect to main page.
-     */
-    @PostMapping("/newComment") 
-    public String newComment(Map<String, Object> model, @RequestParam("comment") String comment) {
-        insertComment(comment);
-        return "redirect:/";
     }
 
 }
