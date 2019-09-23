@@ -28,8 +28,8 @@
 </kbd>
 
 <form action="/comments" method=POST> <font color=white>Write a comment!</font> <br>
-    <input type="text" name="comment" placeholder="Comment"><br><br>
-    <input type="text" name="name" placeholder="Your name"><br><br>
+    <input type="text" name="comment" placeholder="Comment" required><br><br>
+    <input type="text" name="name" placeholder="Your name" required><br><br>
     <input type="submit" value="Submit">
 </form>
 

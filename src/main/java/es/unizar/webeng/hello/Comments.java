@@ -78,10 +78,12 @@ public class Comments {
 
         /** Loads comments saved on redis */
         List<String> comments = getComments();
+
         /** If there are no comments, show a custom message */
         if (comments.isEmpty()) {
             comments.add("There are no comments yet");
         }
+        System.out.println(comments);
         model.put("comments", comments);
 
         /** Renders "comments" view using "model" attributes */
