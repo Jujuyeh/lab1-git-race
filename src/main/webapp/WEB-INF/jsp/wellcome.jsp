@@ -18,6 +18,7 @@
          \//_____/          \/       \/    \/                 
 <!-- A free, customizable, responsive weather widget: https://weatherwidget.io/ -->
 <a class="weatherwidget-io" href="https://forecast7.com/en/41d65n0d89/zaragoza/" data-label_1="ZARAGOZA" data-label_2="WEATHER" data-theme="original" >ZARAGOZA WEATHER</a>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script>
 !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
 </script>
@@ -29,7 +30,22 @@ ${daysLeft} days, ${hoursLeft} hours, ${minutesLeft} minutes and ${secondsLeft} 
 <br>
 Do you wanna know if you would survive thanos snap?? ->> <a href="./thanos">CLICK HERE</a><br>
 <br>
-user@${hostname}:~$ ${message}</kbd>
+
+user@${hostname}:~$ ${message}
+
+<h2><font color=white>Comments</font></h2>
+<c:forEach items="${comments}" var="comment">
+      <c:out value="${comment}<br>" escapeXml="false"/><br>
+</c:forEach>
+
+</kbd>
+
+
+<form action="/newComment" method=POST> <font color=white>Write a comment!</font> <br>
+    <input type="text" name="comment"><br>
+    <input type="submit" value="Submit">
+</form>
+
 <%-- Links to JQuery JavaScript library as a webjar dependency --%>
 <script type="text/javascript" src="webjars/jquery/2.1.4/jquery.min.js"></script>
 </body>
