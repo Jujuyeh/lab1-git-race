@@ -202,6 +202,11 @@ The syntax of the @Value annotation is
 If the argument is "/", it means that the method whose annotation is @GetMapping("/") will be triggered when a request is made to the "root" of the web.
 If the argument is of the type "string/string...etc", it means that the method whose annotation is @GetMapping("string/string...") will be triggered when a request is made to this endpoint of the web.
 
+### @Configuration
+
+The @ Configuration annotation is used to indicate that the class that follows it, has one or more @Bean methods. The @Bean annotation defines objects that are 
+managed by the Spring Container.
+
 ## How to implement code following TDD best practices
 
 Coding following TDD practices involves creating code using a very short development cycle. When you use TDD, you must write a unit test (e.g. using JUnit libraries) before you implement the actual funcionality. Therefore, your goal is passing all the tests. When you have written tests that verify code works properly, and all these tests pass, you know your code works as you intented to.
