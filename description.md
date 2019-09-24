@@ -130,8 +130,8 @@ It supports data structures such as strings, hashes, lists, sets, sorted sets wi
 
 Sources and more information:
 
-*[redis.io](https://redis.io)
-*[https://dzone.com/articles/10-traits-of-redis](https://dzone.com/articles/10-traits-of-redis)
+* [redis.io](https://redis.io)
+* [https://dzone.com/articles/10-traits-of-redis](https://dzone.com/articles/10-traits-of-redis)
 
 
   
@@ -223,6 +223,15 @@ The syntax of the @Value annotation is
 @GetMapping annotation maps HTTP GET requests onto specific handler methods. It is a composed annotation that acts as a shortcut for @RequestMapping(method = RequestMethod.GET).
 If the argument is "/", it means that the method whose annotation is @GetMapping("/") will be triggered when a request is made to the "root" of the web.
 If the argument is of the type "string/string...etc", it means that the method whose annotation is @GetMapping("string/string...") will be triggered when a request is made to this endpoint of the web.
+
+### @PostMapping("/")
+@PostMapping is specialized version of @RequestMapping annotation that acts as a shortcut for @RequestMapping(method = RequestMethod.POST).  
+@PostMapping  annotated methods handle the HTTP POST requests matched with given URI expression.
+
+Sources:
+
+* [https://howtodoinjava.com/spring5/webmvc/controller-getmapping-postmapping/](https://howtodoinjava.com/spring5/webmvc/controller-getmapping-postmapping/)
+
 
 ### @Configuration
 
