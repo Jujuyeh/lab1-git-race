@@ -112,6 +112,28 @@ The sources used and where much more information can be found:
 
 * [spring.io](https://spring.io/projects/spring-boot)
 * [hwww.journaldev.com/7969/spring-boot-tutorial](https://www.journaldev.com/7969/spring-boot-tutorial)
+
+### Redis
+
+Redis is an open source (BSD licensed), in-memory data structure store, used as a database, cache and message broker. 
+
+It supports data structures such as strings, hashes, lists, sets, sorted sets with range queries, bitmaps, hyperloglogs, geospatial indexes with radius queries and streams. 
+
+
+#### Some advantages over using Redis
+
+* It allows storing key and value pairs as large as 512 MB.
+* It uses its own hashing mechanism called Redis Hashing.
+* It offers data replication.
+* Its cache can withstand failures and provide uninterrupted service
+* It has clients in all the popular programming languages.
+
+Sources and more information:
+
+*[redis.io](https://redis.io)
+*[https://dzone.com/articles/10-traits-of-redis](https://dzone.com/articles/10-traits-of-redis)
+
+
   
 ## How these technologies work
 
