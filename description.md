@@ -253,3 +253,13 @@ These are the steps of TDD development cycle:
 You should avoid some practices, for example, dependency between tests. More documentation about TDD can be found [here](https://en.wikipedia.org/wiki/Test-driven_development).
 
 Note that following TDD practices might not sound very useful when adding a small and simple feature, but adopting this practice is very helpful in a complex project, in which each time you add a piece of code it may break the rest of it and make it difficult to detect where the error is.
+
+## Social-Bar
+
+A sidebar has been added to the main page of the website in order to share the website with friends and family through various social networks.
+
+In order to be able to share it is enough to select the icon of the network through which you want to send the link of the page. As a result, the web page will be opened in a pop-up browser page to share.
+
+## Record of visits by ip address
+
+It has developed a simple record of visits with the aim that the user can know how many times you have visited the website based on your IP address.

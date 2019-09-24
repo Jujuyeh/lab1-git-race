@@ -13,7 +13,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Map;
 import java.util.GregorianCalendar;
-
+import java.util.LinkedList;
 import java.lang.IllegalStateException;
 
 import java.net.InetAddress;
@@ -43,6 +43,7 @@ public class HelloController {
     private String last_ip = "0.0.0.0";
 
     private String userAgent;
+    private LinkedList<RegisterIP> listaIps = new LinkedList<RegisterIP>();
 
 
 
@@ -118,6 +119,11 @@ public class HelloController {
             addr = InetAddress.getLocalHost();
             /** Sets "hostname" attribute to server machine name */
             model.put("hostname", addr.getHostName());
+			
+			/** Control of number of visits for each user **/
+            int yourVisits = monitorizeNumberOfVisits(addr);
+			model.put("yourVisits", yourVisits);
+			
         } catch (UnknownHostException ex) {
             logger.info("Hostname can not be resolved");
         }
@@ -199,4 +205,39 @@ public class HelloController {
         /** Renders "joke" view using "model" attributes */
         return "joke";
     }
+	
+	
+	 /** Atomic way in order to avoid race conditions **/
+	private synchronized int monitorizeNumberOfVisits(InetAddress addr) {
+		
+		 RegisterIP r = new RegisterIP();
+         r.setDirection(addr);
+         
+		 int yourVisits;
+         int index = containsRegisterIP(r);
+        
+         if (index == -1) {
+         	r.setNumberVisits(1);
+         	listaIps.addLast(r);
+         	yourVisits = 1;
+         }
+         else {
+         	r = listaIps.get(index);
+         	int times = r.getNumberVisits() + 1;
+         	yourVisits = times;
+         	r.setNumberVisits(times);
+         	listaIps.add(index, r);
+         }
+		 return yourVisits;
+	}
+
+	
+	private int containsRegisterIP(RegisterIP r) {
+		for (int i = 0; i < listaIps.size(); i++) {
+			if (listaIps.get(i).equals(r)) {
+				return i;
+			}
+		}
+		return -1;
+	}
 }

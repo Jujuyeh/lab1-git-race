@@ -7,9 +7,16 @@
 <title>Hello world</title>
 <%-- Links to Bootstrap CSS framework as a webjar dependency --%>
 <link rel="stylesheet" type="text/css"
-
-	href="webjars/bootstrap/3.3.5/css/bootstrap.min.css" />
+	  href="webjars/bootstrap/3.3.5/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" 
+	  href="menu_files/menu.css">
+<link rel="stylesheet" type="text/css"
+	  href="footer_files/font.css">
+<link rel="stylesheet" type="text/css"
+	  href="footer_files/main.css"> 
 <body style="background-color: #333">
+<div class="paquete">
+<center>
 	<pre
 		style="display: table; color: white; background-color: transparent; border: none;">
 
@@ -28,16 +35,26 @@
 </pre>
 <kbd>${os} ${hostname} ${version} ${time} <br>
 Last login: ${last_time} from ${last_ip}<br>
+Your personal visits to the website: ${yourVisits}<br>
 <br>Deadline is ${deadline}<br>
 ${daysLeft} days, ${hoursLeft} hours, ${minutesLeft} minutes and ${secondsLeft} seconds left<br>
 <br>
 Do you wanna know if you would survive thanos snap?? ->> <a href="./thanos">CLICK HERE</a><br>
+<br>If you want to write a comment or view the comments, check the <a href="./comments">comment section</a>.<br>
 <br>
 Egg Game?? ->> <a href="./egg">CLICK HERE</a><br>
 <br>
 user@${hostname}:~$ ${message}</kbd>
 <%-- Links to JQuery JavaScript library as a webjar dependency --%>
 <script type="text/javascript" src="webjars/jquery/2.1.4/jquery.min.js"></script>
+</center>
+</div>
+<div class="social-bar">
+    <a href="https://www.facebook.com/DevCode.la" class="icon icon-facebook" target="_blank"></a>
+    <a href="https://twitter.com/DevCodela" class="icon icon-twitter" target="_blank"></a>
+    <a href="https://www.youtube.com/c/devcodela" class="icon icon-youtube" target="_blank"></a>
+    <a href="https://www.instagram.com/devcodela/" class="icon icon-instagram" target="_blank"></a>
+</div>
 </body>
 
 
