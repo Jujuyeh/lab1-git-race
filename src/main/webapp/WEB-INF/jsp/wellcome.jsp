@@ -32,6 +32,7 @@ Last login: ${last_time} from ${last_ip}<br>
 ${daysLeft} days, ${hoursLeft} hours, ${minutesLeft} minutes and ${secondsLeft} seconds left<br>
 <br>
 Do you wanna know if you would survive thanos snap?? ->> <a href="./thanos">CLICK HERE</a><br>
+<br>If you want to write a comment or view the comments, check the <a href="./comments">comment section</a>.<br>
 <br>
 user@${hostname}:~$ ${message}</kbd>
 <%-- Links to JQuery JavaScript library as a webjar dependency --%>
