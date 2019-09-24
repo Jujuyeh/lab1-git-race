@@ -42,6 +42,8 @@ ${daysLeft} days, ${hoursLeft} hours, ${minutesLeft} minutes and ${secondsLeft} 
 Do you wanna know if you would survive thanos snap?? ->> <a href="./thanos">CLICK HERE</a><br>
 <br>If you want to write a comment or view the comments, check the <a href="./comments">comment section</a>.<br>
 <br>
+Egg Game?? ->> <a href="./egg">CLICK HERE</a><br>
+<br>
 user@${hostname}:~$ ${message}<br>
 <br>
 Last commit(${commitDate}): ${commitMessage}</kbd>
