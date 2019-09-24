@@ -11,9 +11,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Controller
 public class Comments {
+
+    Logger logger = LoggerFactory.getLogger(Comments.class);
         
     ObjectMapper mapper = new ObjectMapper();
 
@@ -48,8 +52,8 @@ public class Comments {
             }
             
         } catch (Exception e) {
-            System.out.println("Error obtaining comments");
-            return null;
+            logger.debug("Error obtaining comments");
+            return new ArrayList<String>();
         }
     }
 
@@ -81,7 +85,7 @@ public class Comments {
             sharedData.opsForValue().set("comments", jsonInString );
 
         } catch (Exception e) {
-            System.out.println("Error inserting comment");
+            logger.debug("Error inserting comment");
         }
     }
 
