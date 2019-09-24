@@ -39,5 +39,8 @@ dependencies {
 
     compile 'com.jcabi:jcabi-github:1.0'
     compile 'javax.json:javax.json-api'
+    //Dependencies of Swagger
+    implementation 'io.springfox:springfox-swagger2:2.9.2'
+    implementation 'io.springfox:springfox-swagger-ui:2.9.2'
 }
 
