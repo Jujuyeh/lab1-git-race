@@ -25,7 +25,7 @@ public class PrimeNumberTest {
     @Test
     public void testPrimeNumber() throws Exception {
         HashMap<String, Object> map = new HashMap<>();
-        String view = controller.prime(null, map);
+        String view = controller.prime(-1, map);
         assertThat(view, is("prime"));
     }
 
@@ -35,7 +35,7 @@ public class PrimeNumberTest {
     @Test
     public void testNip_is_PrimeNumber() throws Exception {
         HashMap<String, Object> map = new HashMap<>();
-        String view = controller.prime("13", map);
+        String view = controller.prime(13, map);
         assertThat(view, is("prime2"));
         assertThat(map.containsKey("msg"), is(true));
         assertThat(map.get("msg"), is("Your nip 13 is a prime number"));
@@ -47,7 +47,7 @@ public class PrimeNumberTest {
     @Test
     public void testNip_isNot_PrimeNumber() throws Exception {
         HashMap<String, Object> map = new HashMap<>();
-        String view = controller.prime("222222", map);
+        String view = controller.prime(222222, map);
         assertThat(view, is("prime2"));
         assertThat(map.containsKey("msg"), is(true));
         assertThat(map.get("msg"), is("Your nip 222222 is not a prime number"));
@@ -59,10 +59,10 @@ public class PrimeNumberTest {
     @Test
     public void testNip_multiples_PrimeNumber() throws Exception {
         HashMap<String, Object> map = new HashMap<>();
-        String view = controller.prime("6", map);
+        String view = controller.prime(6, map);
         assertThat(view, is("prime2"));
-        assertThat(map.containsKey("multiplos"), is(true));
-        assertThat(map.get("multiplos"), is("1, 2, 3, 6"));
+        assertThat(map.containsKey("primeFactors"), is(true));
+        assertThat(map.get("primeFactors"), is("2, 3"));
     }
 
 }

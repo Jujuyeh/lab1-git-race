@@ -6,6 +6,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Map;
 
+import java.util.stream.IntStream;
+
+import java.util.stream.Collectors;
+import java.util.List;
+
 @Controller
 public class PrimeNumber {
 
@@ -17,45 +22,37 @@ public class PrimeNumber {
      * @return the view
      */
     @GetMapping("/prime")
-    public String prime(@RequestParam(value = "nip", required=false) String nip1, Map<String, Object> model) {
-        if(nip1 != null && !nip1.isEmpty()){
-            //nip is not null and convert to integer
-            int nip = Integer.parseInt(nip1);
+    public String prime(@RequestParam(value = "nip", defaultValue = "-1") int nip, Map<String, Object> model) {
+        if(nip != -1){
             //calculate if nip is a prime number
-            Boolean esPrimoActual = true;
-            if(nip%2==0){
-                esPrimoActual = false;
-            }
-            else{ 
-                for(int i=3; i*i<=nip; i+=2){
-                    if(nip%i==0){
-                        esPrimoActual = false;
-                        break;
-                    }
-                }
-            }
-
+            Boolean esPrimoActual = isPrime(nip);
+            //calculate prime factors of nip
+            IntStream it=primeFactors(nip);
+            List<Integer> d = it.boxed().collect(Collectors.toList());
+            String primeFactors = d.stream().map(Object::toString).collect(Collectors.joining(", "));
             if (esPrimoActual){
                 // Prime
                 model.put("msg", "Your nip " + nip +" is a prime number");
-                model.put("multiplos", "1, " + nip);
+                model.put("primeFactors", primeFactors);
             }else {
                 // Not Prime
-
-                //calculate multiples of nip
-                String multiplos="1";
-                for (int i=2;i<=nip;i++){
-                    if (nip%i==0){
-                        multiplos = multiplos + ", " + i;
-                    }
-                }
                 model.put("msg", "Your nip " + nip +" is not a prime number");
-                model.put("multiplos", multiplos);
+                model.put("primeFactors", primeFactors);
             }
             return "prime2";
         }
         else{
             return "prime";
         }
+    }
+
+    public static boolean isPrime(int number) {
+        return !IntStream.rangeClosed(2, number/2).anyMatch(i -> number%i == 0); 
+    }
+
+    public static IntStream primeFactors(int n) {
+        return IntStream.range(2, n-1)
+            .filter(i -> n % i == 0 && 
+                    !primeFactors(i).findAny().isPresent()); // or primeFactors(i).count() == 0
     }
 }

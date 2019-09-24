@@ -1,5 +1,5 @@
 <%--@elvariable id="msg" type="String"--%>
-<%--@elvariable id="multiplos" type="String"--%>
+<%--@elvariable id="primeFactors" type="String"--%>
 <!DOCTYPE html>
 <html lang="en">
 <title>Prime Number Checker</title>
@@ -8,7 +8,7 @@
     <div>
     <h1>Prime Number Checker</h1>
     <h2>${msg}<br></h2>
-    <h3>Is multiple of: ${multiplos}<br></h3>
+    <h3>Prime Factors: ${primeFactors}<br></h3>
         <br>
         <p></p>
         <form>
