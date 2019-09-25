@@ -28,11 +28,16 @@ dependencies {
 
     compile 'com.google.guava:guava:28.1-jre'
 
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
     providedRuntime 'org.apache.tomcat.embed:tomcat-embed-jasper'
 
     testCompile 'org.springframework.boot:spring-boot-starter-test'
 
     compile 'org.springframework.boot:spring-boot-devtools'
+    //Dependencies of Swagger
+    implementation 'io.springfox:springfox-swagger2:2.9.2'
+    implementation 'io.springfox:springfox-swagger-ui:2.9.2'
 }
 
