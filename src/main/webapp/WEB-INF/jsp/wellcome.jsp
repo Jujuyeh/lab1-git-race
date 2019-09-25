@@ -8,24 +8,24 @@
 <%-- Links to Bootstrap CSS framework as a webjar dependency --%>
 <link rel="stylesheet" type="text/css"
 	  href="webjars/bootstrap/3.3.5/css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" 
+<link rel="stylesheet" type="text/css"
 	  href="menu_files/menu.css">
 <link rel="stylesheet" type="text/css"
 	  href="footer_files/font.css">
 <link rel="stylesheet" type="text/css"
-	  href="footer_files/main.css"> 
+	  href="footer_files/main.css">
 <body style="background-color: #333">
 <div class="paquete">
 <center>
 	<pre
 		style="display: table; color: white; background-color: transparent; border: none;">
 
-.___                  __      __      ___.      ____ ________ 
+.___                  __      __      ___.      ____ ________
 |   | ____    ____   /  \    /  \ ____\_ |__   /_   /   __   \
 |   |/    \  / ___\  \   \/\/   // __ \| __ \   |   \____    /
-|   |   |  \/ /_/  >  \        /\  ___/| \_\ \  |   |  /    / 
-|___|___|  /\___  /    \__/\  /  \___  >___  /  |___| /____/  
-         \//_____/          \/       \/    \/                 
+|   |   |  \/ /_/  >  \        /\  ___/| \_\ \  |   |  /    /
+|___|___|  /\___  /    \__/\  /  \___  >___  /  |___| /____/
+         \//_____/          \/       \/    \/
 
 <!-- A free, customizable, responsive weather widget: https://weatherwidget.io/ -->
 <a class="weatherwidget-io" href="https://forecast7.com/en/41d65n0d89/zaragoza/" data-label_1="ZARAGOZA" data-label_2="WEATHER" data-theme="original" >ZARAGOZA WEATHER</a>
@@ -42,6 +42,14 @@ ${daysLeft} days, ${hoursLeft} hours, ${minutesLeft} minutes and ${secondsLeft} 
 Do you wanna know if you would survive thanos snap?? ->> <a href="./thanos">CLICK HERE</a><br>
 <br>If you want to write a comment or view the comments, check the <a href="./comments">comment section</a>.<br>
 <br>
+Next tramway arrivals at Campus Rio Ebro tramway stop <a href="./tramway">SHOW TIME</a><br>
+<i class="fa fa-train" aria-hidden="true"></i>
+${time_to_mago_oz}<br>
+<p style="color: red">${alert_mago_oz}</p>
+<i class="fa fa-train" aria-hidden="true"></i>
+${time_to_avenida_academia}<br>
+<p style="color: red">${alert_avenida_academia}</p>
+
 user@${hostname}:~$ ${message}</kbd>
 <%-- Links to JQuery JavaScript library as a webjar dependency --%>
 <script type="text/javascript" src="webjars/jquery/2.1.4/jquery.min.js"></script>
