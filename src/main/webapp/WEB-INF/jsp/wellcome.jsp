@@ -42,15 +42,17 @@ ${daysLeft} days, ${hoursLeft} hours, ${minutesLeft} minutes and ${secondsLeft} 
 Do you wanna know if you would survive thanos snap?? ->> <a href="./thanos">CLICK HERE</a><br>
 <br>If you want to write a comment or view the comments, check the <a href="./comments">comment section</a>.<br>
 <br>
+Egg Game?? ->> <a href="./egg">CLICK HERE</a><br>
+<br>
 Next tramway arrivals at Campus Rio Ebro tramway stop <a href="./tramway">SHOW TIME</a><br>
-<i class="fa fa-train" aria-hidden="true"></i>
 ${time_to_mago_oz}<br>
 <p style="color: red">${alert_mago_oz}</p>
-<i class="fa fa-train" aria-hidden="true"></i>
 ${time_to_avenida_academia}<br>
 <p style="color: red">${alert_avenida_academia}</p>
-
-user@${hostname}:~$ ${message}</kbd>
+<br>
+user@${hostname}:~$ ${message}<br>
+<br>
+Last commit(${commitDate}): ${commitMessage}</kbd>
 <%-- Links to JQuery JavaScript library as a webjar dependency --%>
 <script type="text/javascript" src="webjars/jquery/2.1.4/jquery.min.js"></script>
 </center>

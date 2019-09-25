@@ -113,6 +113,28 @@ The sources used and where much more information can be found:
 * [spring.io](https://spring.io/projects/spring-boot)
 * [hwww.journaldev.com/7969/spring-boot-tutorial](https://www.journaldev.com/7969/spring-boot-tutorial)
 
+### Redis
+
+Redis is an open source (BSD licensed), in-memory data structure store, used as a database, cache and message broker.
+
+It supports data structures such as strings, hashes, lists, sets, sorted sets with range queries, bitmaps, hyperloglogs, geospatial indexes with radius queries and streams.
+
+
+#### Some advantages over using Redis
+
+* It allows storing key and value pairs as large as 512 MB.
+* It uses its own hashing mechanism called Redis Hashing.
+* It offers data replication.
+* Its cache can withstand failures and provide uninterrupted service
+* It has clients in all the popular programming languages.
+
+Sources and more information:
+
+* [redis.io](https://redis.io)
+* [https://dzone.com/articles/10-traits-of-redis](https://dzone.com/articles/10-traits-of-redis)
+
+
+
 ## How these technologies work
 
 ### How Junit4 works
@@ -201,6 +223,15 @@ The syntax of the @Value annotation is
 @GetMapping annotation maps HTTP GET requests onto specific handler methods. It is a composed annotation that acts as a shortcut for @RequestMapping(method = RequestMethod.GET).
 If the argument is "/", it means that the method whose annotation is @GetMapping("/") will be triggered when a request is made to the "root" of the web.
 If the argument is of the type "string/string...etc", it means that the method whose annotation is @GetMapping("string/string...") will be triggered when a request is made to this endpoint of the web.
+
+### @PostMapping("/")
+@PostMapping is specialized version of @RequestMapping annotation that acts as a shortcut for @RequestMapping(method = RequestMethod.POST).
+@PostMapping  annotated methods handle the HTTP POST requests matched with given URI expression.
+
+Sources:
+
+* [https://howtodoinjava.com/spring5/webmvc/controller-getmapping-postmapping/](https://howtodoinjava.com/spring5/webmvc/controller-getmapping-postmapping/)
+
 
 ### @Configuration
 
