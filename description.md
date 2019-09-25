@@ -112,7 +112,7 @@ The sources used and where much more information can be found:
 
 * [spring.io](https://spring.io/projects/spring-boot)
 * [hwww.journaldev.com/7969/spring-boot-tutorial](https://www.journaldev.com/7969/spring-boot-tutorial)
-  
+
 ## How these technologies work
 
 ### How Junit4 works
@@ -204,7 +204,7 @@ If the argument is of the type "string/string...etc", it means that the method w
 
 ### @Configuration
 
-The @ Configuration annotation is used to indicate that the class that follows it, has one or more @Bean methods. The @Bean annotation defines objects that are 
+The @ Configuration annotation is used to indicate that the class that follows it, has one or more @Bean methods. The @Bean annotation defines objects that are
 managed by the Spring Container.
 
 ## How to implement code following TDD best practices
@@ -232,3 +232,9 @@ In order to be able to share it is enough to select the icon of the network thro
 ## Record of visits by ip address
 
 It has developed a simple record of visits with the aim that the user can know how many times you have visited the website based on your IP address.
+
+## Tramway arrivals at EINA's tramway stop
+
+Show information about tramway arrivals at closest EINA tramway stop: Campus Río Ebro. That way students and professors can know when is going to arrive next tramway so they can get on the tramway in time.
+
+Implementation has been possible thanks to Zaragoza's town hall API.
