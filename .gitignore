@@ -8,6 +8,7 @@ build/
 bin/
 .classpath
 .vscode
+*.swp
 
 # Ignore Gradle GUI config
 gradle-app.setting
