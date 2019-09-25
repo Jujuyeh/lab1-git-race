@@ -18,7 +18,6 @@ User name | NIA | Travis-CI|Score
 [Daniel N. Alcalá](https://github.com/aeri/lab1-git-race) | 739274 | [![Build Status](https://api.travis-ci.org/aeri/lab1-git-race.svg?branch=master)](https://travis-ci.org/aeri/lab1-git-race) |
 [Jorge Fernandez](https://github.com/jorge97fernandez/lab1-git-race) | 721529 | [![Build Status](https://travis-ci.org/jorge97fernandez/lab1-git-race.svg)](https://travis-ci.org/jorge97fernandez/lab1-git-race)
 [Ruben Rodríguez](https://github.com/ZgzInfinity/lab1-git-race) | 737215 | [![Build Status](https://travis-ci.org/ZgzInfinity/lab1-git-race.svg)](https://travis-ci.org/ZgzInfinity/lab1-git-race) | :gift: |
-[Ruben Rodríguez](https://github.com/ZgzInfinity/lab1-git-race) | 737215 | [![Build Status](https://travis-ci.org/ZgzInfinity/lab1-git-race.svg)](https://travis-ci.org/ZgzInfinity/lab1-git-race) | :gift:
 [Javier Martínez](https://github.com/javiermixture17/lab1-git-race) | 737910 | [![Build Status](https://travis-ci.org/javiermixture17/lab1-git-race.svg)](https://travis-ci.org/javiermixture17/lab1-git-race) |
 [Daniel Fraile](https://travis-ci.org/DanFzgz/lab1-git-race) | 721525 | [![Build Status](https://travis-ci.org/DanFzgz/lab1-git-race.svg)](https://travis-ci.org/DanFzgz/lab1-git-race)
 [Guillermo Pérez Gª de Carellán](https://github.com/Guillerm097/lab1-git-race) | 721854 | [![Build Status](https://travis-ci.org/Guillerm097/lab1-git-race.svg)](https://travis-ci.org/Guillerm097/lab1-git-race)
