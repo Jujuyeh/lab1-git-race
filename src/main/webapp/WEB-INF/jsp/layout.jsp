@@ -2,9 +2,17 @@
 <title>Hello world</title>
 <%-- Links to Bootstrap CSS framework as a webjar dependency --%>
 <link rel="stylesheet" type="text/css"
-
-	href="webjars/bootstrap/3.3.5/css/bootstrap.min.css" />
+	  href="webjars/bootstrap/3.3.5/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" 
+	  href="menu_files/menu.css">
+<link rel="stylesheet" type="text/css"
+	  href="footer_files/font.css">
+<link rel="stylesheet" type="text/css"
+	  href="footer_files/main.css"> 
 <body style="background-color: #333">
+<div class="paquete">
+<center>
+
 	<pre
 		style="display: table; color: white; background-color: transparent; border: none;">
 

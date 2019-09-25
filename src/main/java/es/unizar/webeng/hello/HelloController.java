@@ -13,7 +13,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Map;
 import java.util.GregorianCalendar;
-
+import java.util.LinkedList;
 import java.lang.IllegalStateException;
 
 import java.net.InetAddress;
@@ -26,6 +26,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
+import com.jcabi.github.Github;
+import com.jcabi.github.RtGithub;
+import com.jcabi.github.Coordinates;
+import com.jcabi.github.RepoCommits;
+import com.jcabi.github.RepoCommit;
+import com.jcabi.github.Repo;
+import javax.json.JsonObject;
+import java.util.Iterator;
+import java.util.HashMap;
 
 
 @Controller
@@ -43,29 +52,61 @@ public class HelloController {
     private String last_ip = "0.0.0.0";
 
     private String userAgent;
+    private LinkedList<RegisterIP> listaIps = new LinkedList<RegisterIP>();
 
 
 
     @Value("${app.visitorCount}")
     private int visitorCount;
-    
+
     @Autowired
     private HttpServletRequest request;
 
-    private long getSecondsLeft(long difference){
-        return difference/1000%60;
+    private long getSecondsLeft(long difference) {
+        return difference / 1000 % 60;
     }
 
-    private long getMinutesLeft(long difference){
-        return difference/(1000*60)%60;
+    private long getMinutesLeft(long difference) {
+        return difference / (1000 * 60) % 60;
     }
 
-    private long getHoursLeft(long difference){
-        return difference/(1000*60*60)%24;
+    private long getHoursLeft(long difference) {
+        return difference / (1000 * 60 * 60) % 24;
     }
 
-    private long getDaysLeft(long difference){
-        return difference/(1000*60*60*24);
+    private long getDaysLeft(long difference) {
+        return difference / (1000 * 60 * 60 * 24);
+    }
+
+    /**
+     * @see https://github.jcabi.com/
+     */
+    private void getGitHubInfo(Map<String, Object> model) {
+        /**
+         * There is a rate limit of up to 60 requests per hour, an exception is risen in
+         * case this limit is exceeded.
+         * 
+         * @see https://developer.github.com/v3/#rate-limiting
+         */
+        try {
+            final Github github = new RtGithub();
+            Repo repo = github.repos().get(new Coordinates.Simple("UNIZAR-30246-WebEngineering/lab1-git-race"));
+            RepoCommits commits = repo.commits();
+            Map<String, String> params = new HashMap<String, String>();
+            Iterator<RepoCommit> it = commits.iterate(params).iterator();
+            RepoCommit lastCommit = it.next();
+            RepoCommit.Smart smartRepo = new RepoCommit.Smart(lastCommit);
+            String message = smartRepo.message();
+            JsonObject json = smartRepo.json();
+            json = json.getJsonObject("commit");
+            json = json.getJsonObject("author");
+            String date = json.getString("date");
+            model.put("commitMessage", message);
+            model.put("commitDate", date);
+        } catch (Throwable t) {
+            model.put("commitMessage", "-");
+            model.put("commitDate", "-");
+        }
     }
 
     /**
@@ -118,6 +159,11 @@ public class HelloController {
             addr = InetAddress.getLocalHost();
             /** Sets "hostname" attribute to server machine name */
             model.put("hostname", addr.getHostName());
+			
+			/** Control of number of visits for each user **/
+            int yourVisits = monitorizeNumberOfVisits(addr);
+			model.put("yourVisits", yourVisits);
+			
         } catch (UnknownHostException ex) {
             logger.info("Hostname can not be resolved");
         }
@@ -147,7 +193,7 @@ public class HelloController {
         model.put("message", message);
 
         /* It adds one to the visits of the web */
-        synchronized(this){ // We do it in an atomic way to avoid race conditions.
+        synchronized (this) { // We do it in an atomic way to avoid race conditions.
             visitorCount++;
         }
         model.put("visitorCount", visitorCount);
@@ -164,6 +210,8 @@ public class HelloController {
         /** Sets days left to deadline */
         model.put("daysLeft", getDaysLeft(countdownDifference));
         /** Renders "wellcome" view using "model" attributes */
+      
+        getGitHubInfo(model);
 
         tracking(response, model, yay);
 
@@ -199,4 +247,39 @@ public class HelloController {
         /** Renders "joke" view using "model" attributes */
         return "joke";
     }
+	
+	
+	 /** Atomic way in order to avoid race conditions **/
+	private synchronized int monitorizeNumberOfVisits(InetAddress addr) {
+		
+		 RegisterIP r = new RegisterIP();
+         r.setDirection(addr);
+         
+		 int yourVisits;
+         int index = containsRegisterIP(r);
+        
+         if (index == -1) {
+         	r.setNumberVisits(1);
+         	listaIps.addLast(r);
+         	yourVisits = 1;
+         }
+         else {
+         	r = listaIps.get(index);
+         	int times = r.getNumberVisits() + 1;
+         	yourVisits = times;
+         	r.setNumberVisits(times);
+         	listaIps.add(index, r);
+         }
+		 return yourVisits;
+	}
+
+	
+	private int containsRegisterIP(RegisterIP r) {
+		for (int i = 0; i < listaIps.size(); i++) {
+			if (listaIps.get(i).equals(r)) {
+				return i;
+			}
+		}
+		return -1;
+	}
 }

@@ -7,14 +7,28 @@
 
 <kbd>${os} ${hostname} ${version} ${time} <br>
 Last login: ${last_time} from ${last_ip}<br>
+Your personal visits to the website: ${yourVisits}<br>
 <br>Deadline is ${deadline}<br>
 ${daysLeft} days, ${hoursLeft} hours, ${minutesLeft} minutes and ${secondsLeft} seconds left<br>
 <br>
 Do you wanna know if you would survive thanos snap?? ->> <a href="./thanos">CLICK HERE</a><br>
+<br>If you want to write a comment or view the comments, check the <a href="./comments">comment section</a>.<br>
 <br>
-user@${hostname}:~$ ${message}</kbd>
+Egg Game?? ->> <a href="./egg">CLICK HERE</a><br>
+<br>
+user@${hostname}:~$ ${message}<br>
+<br>
+Last commit(${commitDate}): ${commitMessage}</kbd>
 <%-- Links to JQuery JavaScript library as a webjar dependency --%>
 <script type="text/javascript" src="webjars/jquery/2.1.4/jquery.min.js"></script>
+</center>
+</div>
+<div class="social-bar">
+    <a href="https://www.facebook.com/DevCode.la" class="icon icon-facebook" target="_blank"></a>
+    <a href="https://twitter.com/DevCodela" class="icon icon-twitter" target="_blank"></a>
+    <a href="https://www.youtube.com/c/devcodela" class="icon icon-youtube" target="_blank"></a>
+    <a href="https://www.instagram.com/devcodela/" class="icon icon-instagram" target="_blank"></a>
+</div>
 </body>
 
 
