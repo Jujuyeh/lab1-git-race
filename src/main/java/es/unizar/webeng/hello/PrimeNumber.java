@@ -46,10 +46,22 @@ public class PrimeNumber {
         }
     }
 
+    /**
+     * Method that calculate if number is prime
+     * 
+     * @param n  number
+     * @return boolean
+     */
     public static boolean isPrime(int number) {
         return !IntStream.rangeClosed(2, number/2).anyMatch(i -> number%i == 0); 
     }
 
+    /**
+     * Method that calculate prime factors of one number
+     * 
+     * @param n  number
+     * @return IntStream
+     */
     public static IntStream primeFactors(int n) {
         return IntStream.range(2, n-1)
             .filter(i -> n % i == 0 && 
