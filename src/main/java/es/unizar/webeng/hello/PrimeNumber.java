@@ -9,7 +9,6 @@ import java.util.Map;
 import java.util.stream.IntStream;
 
 import java.util.stream.Collectors;
-import java.util.List;
 
 @Controller
 public class PrimeNumber {
@@ -27,17 +26,14 @@ public class PrimeNumber {
             //calculate if nip is a prime number
             Boolean esPrimoActual = isPrime(nip);
             //calculate prime factors of nip
-            IntStream it=primeFactors(nip);
-            List<Integer> d = it.boxed().collect(Collectors.toList());
-            String primeFactors = d.stream().map(Object::toString).collect(Collectors.joining(", "));
+            String primeFactors = primeFactors(nip).mapToObj(Integer::toString).collect(Collectors.joining(", "));
+            model.put("primeFactors", primeFactors);
             if (esPrimoActual){
                 // Prime
                 model.put("msg", "Your nip " + nip +" is a prime number");
-                model.put("primeFactors", primeFactors);
             }else {
                 // Not Prime
                 model.put("msg", "Your nip " + nip +" is not a prime number");
-                model.put("primeFactors", primeFactors);
             }
             return "prime2";
         }
