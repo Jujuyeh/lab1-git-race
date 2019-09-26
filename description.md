@@ -1,15 +1,36 @@
 # Table of Contents
 
-1. [How to build the code](#how-to-build-the-code)
-1. [How to test the code](#how-to-test-the-code)
-1. [How to deploy the code in a server](#how-to-deploy-the-code-in-a-server)
-1. [Setting up Redis](#setting-up-redis)
-1. [Using Redis in your application](#using-redis-in-your-application)
-1. [Which are the technologies used in the code](#which-are-the-technologies-used-in-the-code)
-1. [How these technologies work](#how-these-technologies-work)
-1. [What means each a specific piece or code](#what-means-each-a-specific-piece-or-code)
-1. [Which is the purpose of a specific Java annotation](#which-is-the-purpose-of-a-specific-java-annotation)
-1. [How to implement code following TDD best practices](#how-to-implement-code-following-tdd-best-practices)
+- [Table of Contents](#table-of-contents)
+  - [How to build the code](#how-to-build-the-code)
+  - [How to test the code](#how-to-test-the-code)
+  - [How to deploy the code in a server](#how-to-deploy-the-code-in-a-server)
+  - [Setting up Redis](#setting-up-redis)
+  - [Using Redis in your application](#using-redis-in-your-application)
+  - [Which are the technologies used in the code](#which-are-the-technologies-used-in-the-code)
+  - [How these technologies work](#how-these-technologies-work)
+    - [Junit4](#junit4)
+    - [Spring](#spring)
+      - [Some advantages over using spring](#some-advantages-over-using-spring)
+    - [Redis](#redis)
+      - [Some advantages over using Redis](#some-advantages-over-using-redis)
+  - [How these technologies work](#how-these-technologies-work-1)
+    - [How Junit4 works](#how-junit4-works)
+    - [To start a project with Spring boot](#to-start-a-project-with-spring-boot)
+      - [Prerequisites](#prerequisites)
+      - [Create Spring Boot proyect](#create-spring-boot-proyect)
+  - [What means each a specific piece or code](#what-means-each-a-specific-piece-or-code)
+  - [Which is the purpose of a specific Java annotation](#which-is-the-purpose-of-a-specific-java-annotation)
+    - [@Controller](#controller)
+    - [@Value](#value)
+    - [@GetMapping("/")](#getmapping%22%22)
+    - [@PostMapping("/")](#postmapping%22%22)
+    - [@Configuration](#configuration)
+  - [How to implement code following TDD best practices](#how-to-implement-code-following-tdd-best-practices)
+  - [Social-Bar](#social-bar)
+  - [Record of visits by ip address](#record-of-visits-by-ip-address)
+  - [Comments API REST documentation](#comments-api-rest-documentation)
+    - [Get all comments stored in Redis](#get-all-comments-stored-in-redis)
+    - [Create a new comment](#create-a-new-comment)
 
 ## How to build the code
 
@@ -263,3 +284,48 @@ In order to be able to share it is enough to select the icon of the network thro
 ## Record of visits by ip address
 
 It has developed a simple record of visits with the aim that the user can know how many times you have visited the website based on your IP address.
+
+## Comments API REST documentation
+
+This API accepts GET and POST requests to load all the comments on the Redis
+server or to create a new comment and store it on the Redis server.
+
+### Get all comments stored in Redis
+
+Request url: "/comments"  
+Type: GET  
+Responses:  
+
+* **200** (OK):  
+    ```json
+    [
+        {
+           "comment":"Hello",
+           "name":"Andrew",
+           "date":"2019-09-26T16:07:00.000+0000"
+        },
+        {
+            "comment":"Bye",
+            "name":"Andrew",
+            "date":"2019-09-26T16:07:03.000+0000"
+        },
+        ...
+    ]  
+    ```
+* **500** (Internal Server Error):
+    ```json
+    [
+    ]
+    ```
+
+### Create a new comment
+
+Request url: "/comments"  
+Type: POST  
+Parameters:  
+* **comment**: content of the comment
+* **name**: name of the author of the comment
+
+Responses:  
+* **201** (Created): "OK"  
+* **500** (Internal Server Error): "Error inserting comment"
