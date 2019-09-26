@@ -308,8 +308,7 @@ Responses:
             "comment":"Bye",
             "name":"Andrew",
             "date":"2019-09-26T16:07:03.000+0000"
-        },
-        ...
+        }
     ]  
     ```
 * **500** (Internal Server Error):
