@@ -27,9 +27,15 @@
         type: 'GET',
         dataType: 'json',
         success: function (comments) {
+
+          // Iterate though all the comments received
           comments.forEach(comment => {
+
+            // Reformat the date string
             comment.date = comment.date.replace("T", " ");
             comment.date = comment.date.split('.')[0];
+
+            // Show in the HTML parragraph identified by "comments" the comment
             document.getElementById("comments").innerHTML += "<font size=+1>" 
               + comment.comment + "</font>" + "<br>Written by " + comment.name 
               + " on " + comment.date + "<br><br>";
@@ -51,16 +57,19 @@
 
   <script type="text/javascript">
     $('form').submit(function () {
+
+      // Create a POST request to /comments
       $.ajax({
         type: "Post",
         url: $('form').attr('action'),
         data: $('form').serialize(),
         success: function (result) {
+
+          // Reload the comment section
           window.location = 'comment_section';
         }
       });
 
-      //return false so the form does not submit again
       return false;
     });
   </script>
