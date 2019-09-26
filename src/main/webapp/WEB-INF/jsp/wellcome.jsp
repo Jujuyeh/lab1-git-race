@@ -6,6 +6,8 @@
 <html lang="en">
 <title>Hello world</title>
 <%-- Links to Bootstrap CSS framework as a webjar dependency --%>
+
+<link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/waltograph" type="text/css"/>
 <link rel="stylesheet" type="text/css"
 	  href="webjars/bootstrap/3.3.5/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" 
@@ -46,7 +48,13 @@ Egg Game?? ->> <a href="./egg">CLICK HERE</a><br>
 <br>
 user@${hostname}:~$ ${message}<br>
 <br>
+
+<p style="font-family:  WaltographRegular; font-size: large">Please do this test to find out which Disney character you are. <a href="./disney">START TEST</a></p><br>
+<br>
+user@${hostname}:~$ ${message}</kbd>
+
 Last commit(${commitDate}): ${commitMessage}</kbd>
+
 <%-- Links to JQuery JavaScript library as a webjar dependency --%>
 <script type="text/javascript" src="webjars/jquery/2.1.4/jquery.min.js"></script>
 </center>
