@@ -17,6 +17,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.util.ArrayList;
 import java.util.List;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import java.util.Date;
+import org.hamcrest.core.StringStartsWith;
+import org.springframework.test.web.servlet.MvcResult;
+import org.hamcrest.MatcherAssert;
+
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(Comments.class)
@@ -32,29 +37,28 @@ public class CommentsUnitTest {
     private MockMvc mvc;
 
     /**
-     * Checks the message when there is no comments.
+     * Checks the returned values when there is no comments.
      */
     @Test
-    public void testNoComments() throws Exception {
+    public void testGetNoComments() throws Exception {
         given(stringRedisTemplate.opsForValue()).willReturn(valueOperations);
-        List<String> comments = new ArrayList<String>();
-        comments.add("There are no comments yet");
-        this.mvc.perform(get("/comments"))
+        MvcResult response = this.mvc.perform(get("/comments"))
                 .andExpect(status().isOk())
-                .andExpect(model().attribute("comments", comments));
+                .andReturn();
+        String comments = response.getResponse().getContentAsString();
+        MatcherAssert.assertThat(comments, StringStartsWith.startsWith("[{\"comment\":\"There are no comments yet\",\"name\":\"admin\",\"date\":"));
     }
     
     /**
      * Checks that the response of the POST method with a valid comment is a
-     * redirect to "/comments".
+     * "created" code.
      */
     @Test
     public void testWriteComment() throws Exception {
         given(stringRedisTemplate.opsForValue()).willReturn(valueOperations);
         this.mvc.perform(post("/comments").param("comment", "This is a comment")
                         .param("name", "Someone"))
-                        .andExpect(status().is3xxRedirection())
-                        .andExpect(redirectedUrl("/comments"));
+                        .andExpect(status().isCreated());
     }
 
     /**
@@ -65,6 +69,16 @@ public class CommentsUnitTest {
     public void testWriteInvalidComment() throws Exception {
         given(stringRedisTemplate.opsForValue()).willReturn(valueOperations);
         this.mvc.perform(post("/comments")).andExpect(status().isBadRequest());
+    }
+
+    /**
+     * Checks that the comment section loads.
+     */
+    @Test
+    public void testLoadCommentSection() throws Exception {
+        given(stringRedisTemplate.opsForValue()).willReturn(valueOperations);
+        this.mvc.perform(get("/comments"))
+                .andExpect(status().isOk());
     }
 
 }

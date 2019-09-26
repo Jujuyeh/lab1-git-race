@@ -19,7 +19,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 /**
- * REST API for comments stored on redis
+ * REST API for comments stored on redis.
  */
 @Controller
 public class Comments {
@@ -63,14 +63,14 @@ public class Comments {
     }
 
     /**
-     * Returns the array of comments stored on redis
-     * @return Array of comments stored on redis
+     * Returns the array of comments stored on redis.
+     * @return Array of comments stored on redis.
      */
     @GetMapping("/comments")
     public @ResponseBody ResponseEntity<List<Comment>> welcome() {
 
         try {
-            
+
             /** Loads the comments saved on redis */
             List<Comment> comments = getComments();
 
