@@ -40,7 +40,7 @@ Your personal visits to the website: ${yourVisits}<br>
 ${daysLeft} days, ${hoursLeft} hours, ${minutesLeft} minutes and ${secondsLeft} seconds left<br>
 <br>
 Do you wanna know if you would survive thanos snap?? ->> <a href="./thanos">CLICK HERE</a><br>
-<br>If you want to write a comment or view the comments, check the <a href="./comments">comment section</a>.<br>
+<br>If you want to write a comment or view the comments, check the <a href="./comment_section">comment section</a>.<br>
 <br>
 Egg Game?? ->> <a href="./egg">CLICK HERE</a><br>
 <br>
