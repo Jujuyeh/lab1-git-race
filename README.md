@@ -18,4 +18,4 @@ User name | NIA | Travis-CI|Score
 [Ruben Rodríguez](https://github.com/ZgzInfinity/lab1-git-race) | 737215 | [![Build Status](https://travis-ci.org/ZgzInfinity/lab1-git-race.svg)](https://travis-ci.org/ZgzInfinity/lab1-git-race) | :gift:
 [Javier Martínez](https://github.com/javiermixture17/lab1-git-race) | 737910 | [![Build Status](https://travis-ci.org/javiermixture17/lab1-git-race.svg)](https://travis-ci.org/javiermixture17/lab1-git-race) |
 [Daniel Fraile](https://travis-ci.org/DanFzgz/lab1-git-race) | 721525 | [![Build Status](https://travis-ci.org/DanFzgz/lab1-git-race.svg)](https://travis-ci.org/DanFzgz/lab1-git-race) | :gift:
-[Miguel Escribano](https://github.com/a698570/lab1-git-race) | 698570 | [![Build Status](https://travis-ci.org/a698570/lab1-git-race.svg)](https://travis-ci.org/a698570/lab1-git-race) | 
+[Miguel Escribano](https://github.com/a698570/lab1-git-race) | 698570 | [![Build Status](https://travis-ci.org/a698570/lab1-git-race.svg)](https://travis-ci.org/a698570/lab1-git-race) | :gift:
