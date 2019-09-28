@@ -4,6 +4,11 @@ import java.io.*;
 
 import java.util.Map;
 
+import com.jayway.jsonpath.JsonPath;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -13,14 +18,11 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
-
 
 @Controller
 public class TramwayInfo {
+
+    Logger logger = LoggerFactory.getLogger(TramwayInfo.class);
 
 	public final String CAMPUS_EBRO_TO_MAGO_OZ =
                 "https://www.zaragoza.es/sede/servicio/"
@@ -38,7 +40,7 @@ public class TramwayInfo {
     * @param url, url used to query, not null
     * @return json string response
     */
-   public String GET_request(String url) {
+   public String getRequest(String url) {
 	   String json = null;
 
 	   try (CloseableHttpClient httpClient = HttpClientBuilder.create().build())
@@ -49,15 +51,14 @@ public class TramwayInfo {
 	       request.addHeader("Accept", "application/json");
 
 	       /** Execute GET request */
-	       HttpResponse result = httpClient.execute(request);
+           HttpResponse result = httpClient.execute(request);
 
 	       /** Transform http response in a JSON String */
 	       json = EntityUtils.toString(result.getEntity(), "UTF-8");
 	   }
 	   catch (IOException ex)
 	   {
-		   System.out.println("Error trying to make a http request");
-		   ex.printStackTrace();
+		   logger.info("Error trying to make a http request");
 	   }
 
 	   return json;
@@ -69,29 +70,10 @@ public class TramwayInfo {
     * @param String json
     * @return JSON property: "minutos"
     */
-   public int getRemainingTime(String json)
-   {
-	   JSONParser parser = new JSONParser();
-       Object resultObject;
-		try
-		{
-			/** Parse json string and get "minutes" property */
-			resultObject = parser.parse(json);
-
-			JSONObject jobj = (JSONObject)resultObject;
-			JSONArray arrivals = (JSONArray) jobj.get("destinos");
-			JSONObject first_arrival = (JSONObject) arrivals.get(0);
-
-			Long tmp_cast = (Long) first_arrival.get("minutos");
-			return tmp_cast.intValue();
-		}
-		catch (ParseException e)
-		{
-			e.printStackTrace();
-		}
-
-		return -1;
-   }
+    public int getRemainingTime(String json)
+    {
+        return JsonPath.read(json, "$.destinos[0].minutos");
+    }
 
    /**
     * Makes a request to an API built by Zaragoza's town hall in order
@@ -104,27 +86,27 @@ public class TramwayInfo {
    	public String nextTramway(Map<String, Object> model)
    	{
         /** Get arrival times */
-        String response1 = GET_request(CAMPUS_EBRO_TO_MAGO_OZ);
-        String response2 = GET_request(CAMPUS_EBRO_TO_AVENIDA_ACADEMIA);
-        int time_to_mago_oz = getRemainingTime(response1);
-        int time_to_avenida_academia = getRemainingTime(response2);
+        String response1 = getRequest(CAMPUS_EBRO_TO_MAGO_OZ);
+        String response2 = getRequest(CAMPUS_EBRO_TO_AVENIDA_ACADEMIA);
+        int timeToMagoOz = getRemainingTime(response1);
+        int timeToAvenidaAcademia = getRemainingTime(response2);
 
         /** Set alertness if time is short */
         String alert = "You have to run!!!";
-        if (time_to_mago_oz <= 2)
+        if (timeToMagoOz <= 2)
             model.put("alert_mago_oz", alert);
 
-        if (time_to_avenida_academia <= 2)
+        if (timeToAvenidaAcademia <= 2)
             model.put("alert_avenida_academia", alert);
 
         /** Set time attributes */
-        String info_to_mago_oz = time_to_mago_oz +
+        String infoToMagoOz = timeToMagoOz +
                 " minutes before tramway arrives with destination: Mago de Oz.";
-        String info_to_avenida_academia = time_to_avenida_academia +
+        String infoToAvenidaAcademia = timeToAvenidaAcademia +
                 " minutes before tramway arrives with destination: Avenida Academia.";
 
-        model.put("time_to_mago_oz", info_to_mago_oz);
-        model.put("time_to_avenida_academia", info_to_avenida_academia);
+        model.put("time_to_mago_oz", infoToMagoOz);
+        model.put("time_to_avenida_academia", infoToAvenidaAcademia);
 
         return "wellcome";
     }
