@@ -1,0 +1,10 @@
+README.md
+description.md
+docker-compose.yml
+out/
+gradle/
+LICENSE
+*.iml
+.idea
+.git
+travis.yml
