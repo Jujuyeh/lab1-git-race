@@ -8,6 +8,7 @@ build/
 bin/
 .classpath
 .vscode
+.DS_Store
 
 # Ignore Gradle GUI config
 gradle-app.setting

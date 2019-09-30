@@ -1,9 +1,11 @@
 # Table of Contents
 
-1. [How to build the code](#how-to-build-the-code)
-1. [How to test the code](#how-to-test-the-code)
-1. [How to deploy the code in a server](#how-to-deploy-the-code-in-a-server)
-1. [Setting up Redis](#setting-up-redis)
+1. [Automatic setup process](#automatic-setup-process)
+1. [Manual setup process](#manual-setup-process)
+    1. [How to build the code](#how-to-build-the-code)
+    1. [How to test the code](#how-to-test-the-code)
+    1. [How to deploy the code in a server](#how-to-deploy-the-code-in-a-server)
+    1. [Setting up Redis](#setting-up-redis)
 1. [Using Redis in your application](#using-redis-in-your-application)
 1. [Which are the technologies used in the code](#which-are-the-technologies-used-in-the-code)
 1. [How these technologies work](#how-these-technologies-work)
@@ -11,7 +13,27 @@
 1. [Which is the purpose of a specific Java annotation](#which-is-the-purpose-of-a-specific-java-annotation)
 1. [How to implement code following TDD best practices](#how-to-implement-code-following-tdd-best-practices)
 
-## How to build the code
+## Automatic setup process
+
+By using [Docker Compose](https://docs.docker.com/compose/) the whole project can be built and deployed locally, so that
+the webapp is accessible at http://localhost:8081.
+
+Some of the command you may use (check `man docker-compose` for more):
+
+```bash
+docker-compose build  # Build the images
+docker-compose up     # Build the images and start the services 
+docker-compose up -d  # Same as previous but in detached mode (no visible logs of Tomcat)
+docker-compose stop   # Stop all the services but keep containers in storage for future
+docker-compose down   # Stop all the services and destroy the allocated containers
+```
+
+Note that if you are modifying the source code, you don't need to keep bringing down the services, just call `up`
+again. this will check for the need to recreate any image and hot-reload it, leaving everything else the same.
+
+## Manual setup process
+
+### How to build the code
 
 This application uses [Gradle](http://gradle.org) to build the code. Please, refer to the [Gradle user guide](https://docs.gradle.org/current/userguide/installation.html) for its installation. Once it is installed just do:
 
@@ -22,7 +44,7 @@ gradle build
 
 After a few seconds, "BUILD SUCCESSFUL" indicates that the build has completed. There you’ll find generated WAR file inside *libs* folder under *build* directory.
 
-## How to test the code
+### How to test the code
 
 Testing the code can be done automatically by using the JUint library for unit tests. Integration tests may also use specific components of the Spring framework to help with this task.
 
@@ -40,7 +62,7 @@ cd lab1-git-race
 gradle test
 ```
 
-## How to deploy the code in a server
+### How to deploy the code in a server
 
 For developing stages of the project, it is possible to run a *ad-hoc* Tomcat server, just do:
 
@@ -51,18 +73,27 @@ gradle bootRun
 
 Refer to [Apache Tomcat documentation](https://tomcat.apache.org/tomcat-8.0-doc/deployer-howto.html) about how to deploy a WAR file, once [deliverables have been built](#how-to-build-the-code).
 
-## Setting up Redis
+### Setting up Redis
 
 Redis provides persistent storage for the application. To use it, you first need to download and install [Docker](https://www.docker.com/)
 
-After the installation, you can use `docker-compose` to launch a Redis instance.
+To start a Redis instance run:
 
 ```bash
-cd lab1-git-race/src/main/docker
-docker-compose -f redis.yml up
+docker run -p 6379:6379 --name my_redis -d redis:alpine
 ```
 
-This will start a Redis instance on port 6379 (check `redis.yml` if you need to change it).
+To remove the Redis instance run:
+
+```bash
+docker stop my_redis && docker rm my_redis
+```
+
+Note that by default, Spring looks for Redis at localhost at the port 6379. If you want to connect to a Redis instance in 
+a different IP or port, you need to either modify the variables `spring.redis.host` and `spring.redis.port` in the file
+application.properties, or pass the environmental variables `SPRING_REDIS_HOST` and `SPRING_REDIS_PORT` when starting
+Spring.
+
 
 ## Using Redis in your application
 
@@ -112,6 +143,28 @@ The sources used and where much more information can be found:
 
 * [spring.io](https://spring.io/projects/spring-boot)
 * [hwww.journaldev.com/7969/spring-boot-tutorial](https://www.journaldev.com/7969/spring-boot-tutorial)
+
+### Redis
+
+Redis is an open source (BSD licensed), in-memory data structure store, used as a database, cache and message broker. 
+
+It supports data structures such as strings, hashes, lists, sets, sorted sets with range queries, bitmaps, hyperloglogs, geospatial indexes with radius queries and streams. 
+
+
+#### Some advantages over using Redis
+
+* It allows storing key and value pairs as large as 512 MB.
+* It uses its own hashing mechanism called Redis Hashing.
+* It offers data replication.
+* Its cache can withstand failures and provide uninterrupted service
+* It has clients in all the popular programming languages.
+
+Sources and more information:
+
+* [redis.io](https://redis.io)
+* [https://dzone.com/articles/10-traits-of-redis](https://dzone.com/articles/10-traits-of-redis)
+
+
   
 ## How these technologies work
 
@@ -202,6 +255,20 @@ The syntax of the @Value annotation is
 If the argument is "/", it means that the method whose annotation is @GetMapping("/") will be triggered when a request is made to the "root" of the web.
 If the argument is of the type "string/string...etc", it means that the method whose annotation is @GetMapping("string/string...") will be triggered when a request is made to this endpoint of the web.
 
+### @PostMapping("/")
+@PostMapping is specialized version of @RequestMapping annotation that acts as a shortcut for @RequestMapping(method = RequestMethod.POST).  
+@PostMapping  annotated methods handle the HTTP POST requests matched with given URI expression.
+
+Sources:
+
+* [https://howtodoinjava.com/spring5/webmvc/controller-getmapping-postmapping/](https://howtodoinjava.com/spring5/webmvc/controller-getmapping-postmapping/)
+
+
+### @Configuration
+
+The @ Configuration annotation is used to indicate that the class that follows it, has one or more @Bean methods. The @Bean annotation defines objects that are 
+managed by the Spring Container.
+
 ## How to implement code following TDD best practices
 
 Coding following TDD practices involves creating code using a very short development cycle. When you use TDD, you must write a unit test (e.g. using JUnit libraries) before you implement the actual funcionality. Therefore, your goal is passing all the tests. When you have written tests that verify code works properly, and all these tests pass, you know your code works as you intented to.
@@ -217,3 +284,13 @@ These are the steps of TDD development cycle:
 You should avoid some practices, for example, dependency between tests. More documentation about TDD can be found [here](https://en.wikipedia.org/wiki/Test-driven_development).
 
 Note that following TDD practices might not sound very useful when adding a small and simple feature, but adopting this practice is very helpful in a complex project, in which each time you add a piece of code it may break the rest of it and make it difficult to detect where the error is.
+
+## Social-Bar
+
+A sidebar has been added to the main page of the website in order to share the website with friends and family through various social networks.
+
+In order to be able to share it is enough to select the icon of the network through which you want to send the link of the page. As a result, the web page will be opened in a pop-up browser page to share.
+
+## Record of visits by ip address
+
+It has developed a simple record of visits with the aim that the user can know how many times you have visited the website based on your IP address.

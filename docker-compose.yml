@@ -1,0 +1,20 @@
+version: "3"
+services:
+  webapp:
+    restart: always
+    build: .
+    expose:
+      - "8081"
+    ports:
+      - "8081:8081"
+    links:
+      - redis:redis
+    depends_on:
+      - redis
+    env_file: .env
+
+  redis:
+    image: redis:alpine
+    restart: always
+    ports:
+      - "6379:6379"
