@@ -21,6 +21,8 @@ user@${hostname}:~$ ${message}<br>
 
 <p style="font-family:  WaltographRegular; font-size: large">Please do this test to find out which Disney character you are. <a href="./disney">START TEST</a></p><br>
 <br>
+Know if your NIP is a prime number <a href="./prime">CLICK</a><br>
+<br>
 user@${hostname}:~$ ${message}</kbd>
 
 Last commit(${commitDate}): ${commitMessage}</kbd>
