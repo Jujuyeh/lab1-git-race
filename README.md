@@ -9,7 +9,6 @@ User name | NIA | Travis-CI|Score
 [Javier G. Garcés](https://github.com/JaviBite/lab1-git-race)| 738866 | [![Build Status](https://travis-ci.org/JaviBite/lab1-git-race.svg?branch=master)](https://travis-ci.org/JaviBite/lab1-git-race) | :gift: |
 [Victor Peñasco](https://github.com/vpec/lab1-git-race) | 741294 | [![Build Status](https://travis-ci.org/vpec/lab1-git-race.svg)](https://travis-ci.org/vpec/lab1-git-race) | :gift: |
 [Sergio Herrero](https://github.com/sherrero96/lab1-git-race) | 698521 | [![Build Status](https://travis-ci.org/sherrero96/lab1-git-race.svg)](https://travis-ci.org/sherrero96/lab1-git-race) | :gift: |
-[Javier G. Garcés](https://github.com/JaviBite/lab1-git-race)| 738866 | [![Build Status](https://travis-ci.org/JaviBite/lab1-git-race.svg?branch=master)](https://travis-ci.org/JaviBite/lab1-git-race) | :gift:
 [Victor Peñasco](https://github.com/vpec/lab1-git-race) | 741294 | [![Build Status](https://travis-ci.org/vpec/lab1-git-race.svg)](https://travis-ci.org/vpec/lab1-git-race) | :gift:
 [Diego Royo Meneses](https://github.com/diegoroyo/lab1-git-race) | 740388 | [![Build Status](https://travis-ci.org/diegoroyo/lab1-git-race.svg)](https://travis-ci.org/diegoroyo/lab1-git-race) | :gift:
 [Sergio Herrero](https://github.com/sherrero96/lab1-git-race) | 698521 | [![Build Status](https://travis-ci.org/sherrero96/lab1-git-race.svg)](https://travis-ci.org/sherrero96/lab1-git-race) | :gift:
@@ -22,4 +21,5 @@ User name | NIA | Travis-CI|Score
 [Javier Martínez](https://github.com/javiermixture17/lab1-git-race) | 737910 | [![Build Status](https://travis-ci.org/javiermixture17/lab1-git-race.svg)](https://travis-ci.org/javiermixture17/lab1-git-race) |
 [Daniel Fraile](https://travis-ci.org/DanFzgz/lab1-git-race) | 721525 | [![Build Status](https://travis-ci.org/DanFzgz/lab1-git-race.svg)](https://travis-ci.org/DanFzgz/lab1-git-race) | :gift:
 [Miguel Escribano](https://github.com/a698570/lab1-git-race) | 698570 | [![Build Status](https://travis-ci.org/a698570/lab1-git-race.svg)](https://travis-ci.org/a698570/lab1-git-race) | :gift:
+[Alejandro Gutierrez Bolea](https://github.com/AlexGuti14/lab1-git-race) | 735089 | [![Build Status](https://travis-ci.org/AlexGuti14/lab1-git-race.svg)](https://travis-ci.org/AlexGuti14/lab1-git-race) |
 [Guillermo Pérez](https://github.com/Guillerm097/lab1-git-race) | 721854 | [![Build Status](https://travis-ci.org/Guillerm097/lab1-git-race.svg)](https://travis-ci.org/Guillerm097/lab1-git-race)

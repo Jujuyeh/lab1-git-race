@@ -22,7 +22,7 @@ Some of the command you may use (check `man docker-compose` for more):
 
 ```bash
 docker-compose build  # Build the images
-docker-compose up     # Build the images and start the services 
+docker-compose up     # Build the images and start the services
 docker-compose up -d  # Same as previous but in detached mode (no visible logs of Tomcat)
 docker-compose stop   # Stop all the services but keep containers in storage for future
 docker-compose down   # Stop all the services and destroy the allocated containers
@@ -89,7 +89,7 @@ To remove the Redis instance run:
 docker stop my_redis && docker rm my_redis
 ```
 
-Note that by default, Spring looks for Redis at localhost at the port 6379. If you want to connect to a Redis instance in 
+Note that by default, Spring looks for Redis at localhost at the port 6379. If you want to connect to a Redis instance in
 a different IP or port, you need to either modify the variables `spring.redis.host` and `spring.redis.port` in the file
 application.properties, or pass the environmental variables `SPRING_REDIS_HOST` and `SPRING_REDIS_PORT` when starting
 Spring.
@@ -256,6 +256,7 @@ If the argument is "/", it means that the method whose annotation is @GetMapping
 If the argument is of the type "string/string...etc", it means that the method whose annotation is @GetMapping("string/string...") will be triggered when a request is made to this endpoint of the web.
 
 ### @PostMapping("/")
+
 @PostMapping is specialized version of @RequestMapping annotation that acts as a shortcut for @RequestMapping(method = RequestMethod.POST).
 @PostMapping  annotated methods handle the HTTP POST requests matched with given URI expression.
 
