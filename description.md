@@ -165,7 +165,6 @@ Sources and more information:
 * [https://dzone.com/articles/10-traits-of-redis](https://dzone.com/articles/10-traits-of-redis)
 
 
-
 ## How these technologies work
 
 ### How Junit4 works

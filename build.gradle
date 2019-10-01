@@ -44,6 +44,5 @@ dependencies {
     implementation 'io.springfox:springfox-swagger-ui:2.9.2'
 
 	implementation 'org.apache.httpcomponents:httpclient:4.5.10'
-
-	compile 'com.jayway.jsonpath:json-path:2.4.0'
+	implementation 'com.jayway.jsonpath:json-path:2.4.0'
 }
