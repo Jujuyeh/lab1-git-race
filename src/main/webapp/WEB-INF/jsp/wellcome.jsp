@@ -16,6 +16,12 @@ Do you wanna know if you would survive thanos snap?? ->> <a href="./thanos">CLIC
 <br>
 Egg Game?? ->> <a href="./egg">CLICK HERE</a><br>
 <br>
+Next tramway arrivals at Campus Rio Ebro tramway stop <a href="./tramway">SHOW TIME</a><br>
+${time_to_mago_oz}<br>
+<p style="color: red; background-color: #333">${alert_mago_oz}</p>
+${time_to_avenida_academia}<br>
+<p style="color: red; background-color: #333">${alert_avenida_academia}</p>
+<br>
 user@${hostname}:~$ ${message}<br>
 <br>
 

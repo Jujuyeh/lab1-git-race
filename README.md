@@ -20,4 +20,4 @@ User name | NIA | Travis-CI|Score
 [Daniel Fraile](https://travis-ci.org/DanFzgz/lab1-git-race) | 721525 | [![Build Status](https://travis-ci.org/DanFzgz/lab1-git-race.svg)](https://travis-ci.org/DanFzgz/lab1-git-race) | :gift:
 [Miguel Escribano](https://github.com/a698570/lab1-git-race) | 698570 | [![Build Status](https://travis-ci.org/a698570/lab1-git-race.svg)](https://travis-ci.org/a698570/lab1-git-race) | :gift:
 [Alejandro Gutierrez Bolea](https://github.com/AlexGuti14/lab1-git-race) | 735089 | [![Build Status](https://travis-ci.org/AlexGuti14/lab1-git-race.svg)](https://travis-ci.org/AlexGuti14/lab1-git-race) |
-
+[Guillermo Pérez](https://github.com/Guillerm097/lab1-git-race) | 721854 | [![Build Status](https://travis-ci.org/Guillerm097/lab1-git-race.svg)](https://travis-ci.org/Guillerm097/lab1-git-race) | :gift:

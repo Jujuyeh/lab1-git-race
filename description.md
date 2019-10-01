@@ -22,7 +22,7 @@ Some of the command you may use (check `man docker-compose` for more):
 
 ```bash
 docker-compose build  # Build the images
-docker-compose up     # Build the images and start the services 
+docker-compose up     # Build the images and start the services
 docker-compose up -d  # Same as previous but in detached mode (no visible logs of Tomcat)
 docker-compose stop   # Stop all the services but keep containers in storage for future
 docker-compose down   # Stop all the services and destroy the allocated containers
@@ -89,7 +89,7 @@ To remove the Redis instance run:
 docker stop my_redis && docker rm my_redis
 ```
 
-Note that by default, Spring looks for Redis at localhost at the port 6379. If you want to connect to a Redis instance in 
+Note that by default, Spring looks for Redis at localhost at the port 6379. If you want to connect to a Redis instance in
 a different IP or port, you need to either modify the variables `spring.redis.host` and `spring.redis.port` in the file
 application.properties, or pass the environmental variables `SPRING_REDIS_HOST` and `SPRING_REDIS_PORT` when starting
 Spring.
@@ -146,9 +146,9 @@ The sources used and where much more information can be found:
 
 ### Redis
 
-Redis is an open source (BSD licensed), in-memory data structure store, used as a database, cache and message broker. 
+Redis is an open source (BSD licensed), in-memory data structure store, used as a database, cache and message broker.
 
-It supports data structures such as strings, hashes, lists, sets, sorted sets with range queries, bitmaps, hyperloglogs, geospatial indexes with radius queries and streams. 
+It supports data structures such as strings, hashes, lists, sets, sorted sets with range queries, bitmaps, hyperloglogs, geospatial indexes with radius queries and streams.
 
 
 #### Some advantages over using Redis
@@ -165,7 +165,6 @@ Sources and more information:
 * [https://dzone.com/articles/10-traits-of-redis](https://dzone.com/articles/10-traits-of-redis)
 
 
-  
 ## How these technologies work
 
 ### How Junit4 works
@@ -256,7 +255,8 @@ If the argument is "/", it means that the method whose annotation is @GetMapping
 If the argument is of the type "string/string...etc", it means that the method whose annotation is @GetMapping("string/string...") will be triggered when a request is made to this endpoint of the web.
 
 ### @PostMapping("/")
-@PostMapping is specialized version of @RequestMapping annotation that acts as a shortcut for @RequestMapping(method = RequestMethod.POST).  
+
+@PostMapping is specialized version of @RequestMapping annotation that acts as a shortcut for @RequestMapping(method = RequestMethod.POST).
 @PostMapping  annotated methods handle the HTTP POST requests matched with given URI expression.
 
 Sources:
@@ -266,7 +266,7 @@ Sources:
 
 ### @Configuration
 
-The @ Configuration annotation is used to indicate that the class that follows it, has one or more @Bean methods. The @Bean annotation defines objects that are 
+The @ Configuration annotation is used to indicate that the class that follows it, has one or more @Bean methods. The @Bean annotation defines objects that are
 managed by the Spring Container.
 
 ## How to implement code following TDD best practices
@@ -294,3 +294,9 @@ In order to be able to share it is enough to select the icon of the network thro
 ## Record of visits by ip address
 
 It has developed a simple record of visits with the aim that the user can know how many times you have visited the website based on your IP address.
+
+## Tramway arrivals at EINA's tramway stop
+
+Show information about tramway arrivals at closest EINA tramway stop: Campus Río Ebro. That way students and professors can know when is going to arrive next tramway so they can get on the tramway in time.
+
+Implementation has been possible thanks to Zaragoza's town hall API.
