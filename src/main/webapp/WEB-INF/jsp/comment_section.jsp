@@ -21,30 +21,7 @@
       <font color=white>Comments</font>
     </h2>
     <p id="comments"></p>
-    <script>
-      $.ajax({
-        url: '/comments',
-        type: 'GET',
-        dataType: 'json',
-        success: function (comments) {
-
-          // Iterate though all the comments received
-          comments.forEach(comment => {
-
-            // Reformat the date string
-            comment.date = comment.date.replace("T", " ");
-            comment.date = comment.date.split('.')[0];
-
-            // Show in the HTML parragraph identified by "comments" the comment
-            document.getElementById("comments").innerHTML += "<font size=+1>" 
-              + comment.comment + "</font>" + "<br>Written by " + comment.name 
-              + " on " + comment.date + "<br><br>";
-          });
-        }, error(error) {
-          console.log("Error: " + error);
-        }
-      });
-    </script>
+    <script src="js/get_comments.js"></script>
 
   </kbd>
 
@@ -55,24 +32,7 @@
     <input type="submit" value="Submit">
   </form>
 
-  <script type="text/javascript">
-    $('form').submit(function () {
-
-      // Create a POST request to /comments
-      $.ajax({
-        type: "Post",
-        url: $('form').attr('action'),
-        data: $('form').serialize(),
-        success: function (result) {
-
-          // Reload the comment section
-          window.location = 'comment_section';
-        }
-      });
-
-      return false;
-    });
-  </script>
+  <script src="js/new_comment.js"></script>
 
   <%-- Links to JQuery JavaScript library as a webjar dependency --%>
   <script type="text/javascript" src="webjars/jquery/2.1.4/jquery.min.js"></script>

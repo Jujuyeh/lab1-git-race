@@ -14,7 +14,7 @@ public class Comment {
     private Date date;
     
     /**
-     * Construcor
+     * Constructor
      * @param comment Content of the comment
      * @param name Name of the comment
      * @param date Date of the comment
