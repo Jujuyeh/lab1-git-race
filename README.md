@@ -10,8 +10,8 @@ User name | NIA | Travis-CI|Score
 [Victor Peñasco](https://github.com/vpec/lab1-git-race) | 741294 | [![Build Status](https://travis-ci.org/vpec/lab1-git-race.svg)](https://travis-ci.org/vpec/lab1-git-race) | :gift:
 [Diego Royo Meneses](https://github.com/diegoroyo/lab1-git-race) | 740388 | [![Build Status](https://travis-ci.org/diegoroyo/lab1-git-race.svg)](https://travis-ci.org/diegoroyo/lab1-git-race) | :gift:
 [Sergio Herrero](https://github.com/sherrero96/lab1-git-race) | 698521 | [![Build Status](https://travis-ci.org/sherrero96/lab1-git-race.svg)](https://travis-ci.org/sherrero96/lab1-git-race) | :gift:
-[Ignacio Galve](https://github.com/IgnacioSan22/lab1-git-race) | 735508 | [![Build Status](https://travis-ci.org/IgnacioSan22/lab1-git-race.svg)](https://travis-ci.org/sherrero96/lab1-git-race) | :gift: |
-[Andrew Mackay](https://github.com/AndrewKM210/lab1-git-race) | 737069 | [![Build Status](https://travis-ci.org/AndrewKM210/lab1-git-race.svg)](https://travis-ci.org/sherrero96/lab1-git-race) |
+[Ignacio Galve](https://github.com/IgnacioSan22/lab1-git-race) | 735508 | [![Build Status](https://travis-ci.org/IgnacioSan22/lab1-git-race.svg)](https://travis-ci.org/sherrero96/lab1-git-race) | :gift: 
+[Andrew Mackay](https://github.com/AndrewKM210/lab1-git-race) | 737069 | [![Build Status](https://travis-ci.org/AndrewKM210/lab1-git-race.svg)](https://travis-ci.org/sherrero96/lab1-git-race) | :gift: 
 [Eduardo Gimeno](https://github.com/Edu7216/lab1-git-race) | 721615 | [![Build Status](https://travis-ci.org/Edu7216/lab1-git-race.svg)](https://travis-ci.org/Edu7216/lab1-git-race) |
 [Daniel N. Alcalá](https://github.com/aeri/lab1-git-race) | 739274 | [![Build Status](https://api.travis-ci.org/aeri/lab1-git-race.svg?branch=master)](https://travis-ci.org/aeri/lab1-git-race) |
 [Jorge Fernandez](https://github.com/jorge97fernandez/lab1-git-race) | 721529 | [![Build Status](https://travis-ci.org/jorge97fernandez/lab1-git-race.svg)](https://travis-ci.org/jorge97fernandez/lab1-git-race)
