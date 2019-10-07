@@ -8,6 +8,7 @@ build/
 bin/
 .classpath
 .vscode
+*.swp
 .DS_Store
 
 # Ignore Gradle GUI config

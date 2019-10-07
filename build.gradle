@@ -45,5 +45,7 @@ dependencies {
 
     // Dependencie for gson (parse JSON objects and strings)
     implementation 'com.google.code.gson:gson:2.8.5'
-}
 
+	  implementation 'org.apache.httpcomponents:httpclient:4.5.10'
+	  implementation 'com.jayway.jsonpath:json-path:2.4.0'
+}
