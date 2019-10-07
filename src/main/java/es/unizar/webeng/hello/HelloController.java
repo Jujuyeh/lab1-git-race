@@ -281,5 +281,15 @@ public class HelloController {
 			}
 		}
 		return -1;
-	}
+    }
+    
+    /**
+     * Loads the comment section page
+     * @return Comment section page
+     */
+    @GetMapping("/comment_section")
+    public String commentSection() {
+        return "comment_section";
+    }
+
 }

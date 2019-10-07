@@ -12,6 +12,7 @@
 1. [What means each a specific piece or code](#what-means-each-a-specific-piece-or-code)
 1. [Which is the purpose of a specific Java annotation](#which-is-the-purpose-of-a-specific-java-annotation)
 1. [How to implement code following TDD best practices](#how-to-implement-code-following-tdd-best-practices)
+1. [Comments API REST documentation](#comments-api-rest-documentation)
 
 ## Automatic setup process
 
@@ -294,6 +295,50 @@ In order to be able to share it is enough to select the icon of the network thro
 ## Record of visits by ip address
 
 It has developed a simple record of visits with the aim that the user can know how many times you have visited the website based on your IP address.
+
+## Comments API REST documentation
+
+This API accepts GET and POST requests to load all the comments on the Redis
+server or to create a new comment and store it on the Redis server.
+
+### Get all comments stored in Redis
+
+Request url: "/comments"  
+Type: GET  
+Responses:  
+
+* **200** (OK):  
+    ```json
+    [
+        {
+           "comment":"Hello",
+           "name":"Andrew",
+           "date":"2019-09-26T16:07:00.000+0000"
+        },
+        {
+            "comment":"Bye",
+            "name":"Andrew",
+            "date":"2019-09-26T16:07:03.000+0000"
+        }
+    ]  
+    ```
+* **500** (Internal Server Error):
+    ```json
+    [
+    ]
+    ```
+
+### Create a new comment
+
+Request url: "/comments"  
+Type: POST  
+Parameters:  
+* **comment**: content of the comment
+* **name**: name of the author of the comment
+
+Responses:  
+* **201** (Created): "OK"  
+* **500** (Internal Server Error): "Error inserting comment"
 
 ## Tramway arrivals at EINA's tramway stop
 

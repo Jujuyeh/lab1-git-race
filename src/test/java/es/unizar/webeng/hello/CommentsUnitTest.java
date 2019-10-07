@@ -11,12 +11,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import java.util.ArrayList;
-import java.util.List;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.hamcrest.Matchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(Comments.class)
@@ -32,29 +31,29 @@ public class CommentsUnitTest {
     private MockMvc mvc;
 
     /**
-     * Checks the message when there is no comments.
+     * Checks the returned values when there is no comments.
      */
     @Test
-    public void testNoComments() throws Exception {
+    public void testGetNoComments() throws Exception {
         given(stringRedisTemplate.opsForValue()).willReturn(valueOperations);
-        List<String> comments = new ArrayList<String>();
-        comments.add("There are no comments yet");
         this.mvc.perform(get("/comments"))
                 .andExpect(status().isOk())
-                .andExpect(model().attribute("comments", comments));
+                .andExpect(jsonPath("$[0].comment", is("There are no comments yet")))
+                .andExpect(jsonPath("$[0].name", is("admin")))
+                .andExpect(jsonPath("$[0].date",not(isEmptyString())))
+                .andReturn();
     }
     
     /**
      * Checks that the response of the POST method with a valid comment is a
-     * redirect to "/comments".
+     * "created" code.
      */
     @Test
     public void testWriteComment() throws Exception {
         given(stringRedisTemplate.opsForValue()).willReturn(valueOperations);
         this.mvc.perform(post("/comments").param("comment", "This is a comment")
                         .param("name", "Someone"))
-                        .andExpect(status().is3xxRedirection())
-                        .andExpect(redirectedUrl("/comments"));
+                        .andExpect(status().isCreated());
     }
 
     /**
