@@ -19,7 +19,7 @@ Table of Contents
 7. [Which is the purpose of a specific Java annotation](#which-is-the-purpose-of-a-specific-java-annotation)
 8. [How to implement code following TDD best practices](#how-to-implement-code-following-tdd-best-practices)
 9. [Social-Bar](#social-bar)
-10. [Record of visits by IP address]
+10. [Record of visits by IP address](#record-of-visits-by-ip-address)
 11. [Comments API REST documentation](#comments-api-rest-documentation)
 12. [Tramway arrivals at EINA's tramway stop](#tramway-arrivals-at-einas-tramway-stop)
 13. [Generate JavaDoc](#generate-javadoc)
