@@ -45,7 +45,7 @@ public class PrimeNumber {
     /**
      * Method that calculate if number is prime
      * 
-     * @param n  number
+     * @param number number
      * @return boolean
      */
     public static boolean isPrime(int number) {

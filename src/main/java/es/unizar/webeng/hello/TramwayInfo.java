@@ -36,7 +36,9 @@ public class TramwayInfo {
 
    /**
     * Performs a GET request to get tramway info.
-    * @see: https://stackoverflow.com/questions/22816335/java-httprequest-json-response-handling
+    * @see <a href="https://stackoverflow.com/questions/22816335/java-httprequest-json-response-handling">
+    *         Java HttpRequest JSON and Response Handling
+    *     </a>
     * @param url, url used to query, not null
     * @return json string response
     */
@@ -67,7 +69,7 @@ public class TramwayInfo {
    /**
     * Parse JSON string and returns the minutes remaining before
     * the next tramway arrives.
-    * @param String json
+    * @param json
     * @return JSON property: "minutos"
     */
     public int getRemainingTime(String json)
