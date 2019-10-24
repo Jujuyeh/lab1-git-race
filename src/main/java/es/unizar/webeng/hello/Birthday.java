@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 * Controller class declaration.
 */
 @Controller
-public class testController {
+public class Birthday {
 
 	private static HttpURLConnection connection;
 
