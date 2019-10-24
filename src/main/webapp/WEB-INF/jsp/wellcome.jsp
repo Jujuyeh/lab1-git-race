@@ -29,6 +29,8 @@ user@${hostname}:~$ ${message}<br>
 <br>
 Know if your NIP is a prime number <a href="./prime">CLICK</a><br>
 <br>
+<a href="./testjsp">Find what happened the day you were born!</a><br>
+<br>
 user@${hostname}:~$ ${message}</kbd>
 
 Last commit(${commitDate}): ${commitMessage}</kbd>
