@@ -345,3 +345,7 @@ Responses:
 Show information about tramway arrivals at closest EINA tramway stop: Campus Río Ebro. That way students and professors can know when is going to arrive next tramway so they can get on the tramway in time.
 
 Implementation has been possible thanks to Zaragoza's town hall API.
+
+## Historic moments that happened on your birthday
+
+This functionality allows the user to select his birthday with an intuitive calendar format, to then show a fact about that specific date. This implementation was possible thanks to the numbersAPI. 
