@@ -410,3 +410,7 @@ javadoc -protected -splitindex -d <OUT_PATH> -classpath "./src/main/java:./src/m
 ```
 
 Note that `<OUT_PATH>` is the path where you want the JavaDoc to be generated.
+
+## Historic moments that happened on your birthday
+
+This functionality allows the user to select his birthday with an intuitive calendar format, to then show a fact about that specific date. This implementation was possible thanks to the numbersAPI. 
