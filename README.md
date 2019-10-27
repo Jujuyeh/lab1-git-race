@@ -22,4 +22,5 @@ User name | NIA | Travis-CI|Score
 [Alejandro Gutierrez Bolea](https://github.com/AlexGuti14/lab1-git-race) | 735089 | [![Build Status](https://travis-ci.org/AlexGuti14/lab1-git-race.svg)](https://travis-ci.org/AlexGuti14/lab1-git-race) |
 [Guillermo Pérez](https://github.com/Guillerm097/lab1-git-race) | 721854 | [![Build Status](https://travis-ci.org/Guillerm097/lab1-git-race.svg)](https://travis-ci.org/Guillerm097/lab1-git-race) | :gift:
 [Daniel R. Rey](https://github.com/DaniRevillo/lab1-git-race)| 738460 | [![Build Status](https://travis-ci.org/DaniRevillo/lab1-git-race.svg)](https://travis-ci.org/DaniRevillo/lab1-git-race)
+[Fernando Bercedo](https://github.com/ferbercedo/lab1-git-race.git) | 679301| [![Build Status](https://travis-ci.org/ferbercedo/lab1-git-race.svg)](https://travis-ci.org/ferbercedo/lab1-git-race)
 [Julio Salceda](https://github.com/phsxes/lab1-git-race) | 806420 | [![Build Status](https://api.travis-ci.com/phsxes/lab1-git-race.svg)](https://travis-ci.com/phsxes/lab1-git-race) | 
