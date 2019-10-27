@@ -34,6 +34,12 @@ user@${hostname}:~$ ${message}<br>
 <br>
 Know if your NIP is a prime number <a href="./prime">CLICK</a><br>
 <br>
+
+<br>
+We can also discover your ID's letter... <a href="./letter">Let us try!</a><br>
+
+<br>
+
 user@${hostname}:~$ ${message}</kbd>
 
 Last commit(${commitDate}): ${commitMessage}</kbd>
